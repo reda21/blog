@@ -1,0 +1,35 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import "pages/admin";
+
+//font-awesome
+@import "~font-awesome/scss/font-awesome";
+
+//jequery-confirm
+@import "~jquery-confirm/css/jquery-confirm.css";
+
+//reset
+@import "layouts/reset";
+
+//dark mods
+@import "dark-mods";
+
+//template
+@import "layouts/smallTop";
+
+//navbar
+@import "layouts/navbar";
+
+//main
+@import "layouts/main";
+
+//pages
+@import "pages";
+

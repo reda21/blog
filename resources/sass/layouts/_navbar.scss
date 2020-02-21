@@ -1,0 +1,127 @@
+.navbar {
+    #brand {
+        font-family: 'Berkshire Swash';
+        font-size: 25px;
+    }
+
+    li {
+
+        a {
+            &.user-action {
+                padding: 9px 15px;
+
+                img {
+                    border-radius: 50%;
+                    width: 36px;
+                    height: 36px;
+                    margin-right: 10px;
+                }
+
+                &:after {
+                    display: none;
+                }
+
+            }
+
+        }
+
+        &.nav-item.guest {
+            a {
+                &:after {
+                    display: none;
+                }
+            }
+
+            .dropdown-menu {
+                min-width: 250px;
+                padding: 14px 14px 0;
+                overflow: hidden;
+                background-color: rgba(221, 221, 221, 0.9);
+
+                .social-buttons {
+                    margin: 12px 0;
+                }
+
+                a {
+                    width: 49%;
+
+                    &.btn-fb {
+                        color: #fff;
+                        background-color: #3b5998;
+                    }
+
+                    &.btn-tw {
+                        color: #fff;
+                        background-color: #55acee;
+                    }
+                }
+
+                .help-block {
+                    font-size: 12px;
+                }
+
+                .bottom {
+                    background-color: rgba(255, 255, 255, .8);
+                    border-top: 1px solid #ddd;
+                    clear: both;
+                    padding: 14px;
+                    width: 100%;
+                }
+            }
+
+        }
+
+
+        &.nav-item.nav-icon {
+            position: relative;
+
+            a {
+                padding-top: 12px;
+
+                i {
+                    font-size: 24px;
+                    display: block;
+                }
+
+                span.nav-notif {
+                    display: inline-block;
+                    padding: .25em .4em;
+                    font-weight: 700;
+                    line-height: 1;
+                    text-align: center;
+                    white-space: nowrap;
+                    vertical-align: baseline;
+                    border-radius: .25rem;
+                    font-size: 0.75rem;
+                    position: absolute;
+                    top: 5px;
+                    right: 0;
+                    font-family: sans-serif;
+
+                    color: #fff;
+                    background-color: $danger;
+                }
+
+                &:after {
+                    display: none;
+                }
+
+            }
+        }
+
+        .auth.dropdown-menu {
+            width: 350px;
+
+            .dropdown-menu-content {
+                padding: 0 15px 15px 15px;
+            }
+
+            .dropdown-menu-footer {
+                padding: 0 15px 15px 15px;
+            }
+        }
+    }
+
+
+}
+

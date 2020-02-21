@@ -1,0 +1,156 @@
+.card.profile {
+
+    .card-body {
+        position: relative;
+
+        img.card-image-profile {
+            border-radius: 50%;
+            position: absolute;
+            top: -42px;
+            left: 15%;
+            max-width: 75px;
+            border: 3px solid white;
+            transform: translate(-50%, 0%);
+        }
+
+        button {
+            margin: 5px;
+        }
+
+        button.btn.btn-sm.btn-primary.pull-right {
+            position: absolute;
+            right: 5px;
+            top: 42px;
+        }
+    }
+
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+
+    .nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+
+        a {
+            color: #111;
+            font-weight: bold;
+            text-decoration: none;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+
+        &:hover {
+            color: #a20000;
+            // border-bottom: solid #a20000 1px;
+            //  transition: border-width 0.1s ease-in-out;
+        }
+
+        &:hover::after {
+            width: 100%;
+            //transition: width .3s;
+        }
+
+        &.active::after {
+            width: 100%;
+            //transition: width .3s;
+        }
+
+        &.active {
+            color: #a20000 !important;
+        }
+    }
+
+    .nav-link {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        font-size: .875rem;
+    }
+}
+
+.nav-scroller .nav a:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #a20000;
+    transition: width .3s;
+}
+
+.nav-scroller .nav a:hover::after {
+    width: 100%;
+    //transition: width .3s;
+}
+
+.nav-scroller .nav a.active::after {
+    width: 100%;
+    //transition: width .3s;
+}
+
+.nav-scroller .nav a.active {
+    color: #a20000 !important;
+}
+
+.profile-body .profile-feilds .labels {
+    padding-bottom: 4px;
+    margin: 0 0 8px;
+    font-size: 15px !important;
+    font-weight: 600;
+    line-height: 22px !important;
+    color: #555555;
+    border-bottom: solid 2px #eee;
+}
+
+.social-1 {
+    &.list-inline {
+        margin-left: -5px;
+
+        > li {
+            display: inline-block;
+            padding-left: 5px;
+            padding-right: 5px;
+
+            a{
+                &.btn-fb{
+                    padding: 10px 16px 10px;
+                }
+
+                &.btn-tw{
+                    padding: 10px 12px 10px;
+                }
+
+                &.btn-go{
+                    padding: 10px 10px 10px;
+                }
+
+                &.btn-pt{
+                    padding: 10px 14px 10px;
+                }
+
+                &.btn-dr{
+                    padding: 10px 13px 10px;
+                }
+
+
+                i.fa{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
