@@ -41,6 +41,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/imanghafoori/laravel-widgetize" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-highlighter" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jeroennoten/laravel-adminlte" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-diactoros" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-zendframework-bridge" />

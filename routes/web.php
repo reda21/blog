@@ -48,7 +48,7 @@ Route::group(['prefix' => 'acount', 'as' => 'user'], function () {
 });
 
 Route::get('test', function () {
-    return Breadcrumbs::render('home');
+    return User::all();
 });
 
 
