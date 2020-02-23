@@ -57,32 +57,40 @@
                                         <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
                                     </div>
                                     or
-                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8"
+                                    <form class="form" role="form" method="post" action="{{ route('login') }}"
+                                          accept-charset="UTF-8"
                                           id="login-nav">
+                                        @csrf
                                         <div class="form-group">
-                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail2"
-                                                   placeholder="Email address" required="">
+                                            <label class="sr-only" for="email2">
+                                                Nom D'utilisateur ou Adresse Email
+                                            </label>
+                                            <input type="text" class="form-control" name="email" id="email2"
+                                                   placeholder="Nom D'utilisateur ou Adresse Email">
                                         </div>
                                         <div class="form-group">
-                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword2"
-                                                   placeholder="Password" required="">
-                                            <div class="help-block text-right"><a href="">Forget the password ?</a>
+                                            <label class="sr-only" for="password2">Mot de passe</label>
+                                            <input type="password" name="password" class="form-control" id="password2"
+                                                   placeholder="Mot de passe">
+                                            <div class="help-block text-right">
+                                                <a href="{{ route('password.request') }}">Mot de passe oublié?</a>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Se connecter
+                                            </button>
                                         </div>
-                                        <div class="checkbox">
+                                        <div class="checkbox pl-2">
                                             <label>
-                                                <input type="checkbox"> keep me logged-in
+                                                <input type="checkbox" name="remember" class="form-check-input"
+                                                       id="remember" {{ old("remember") ? 'checked' : '' }}>
+                                                keep me logged-in
                                             </label>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="bottom text-center">
-                                    New here ? <a href="#"><b>Join Us</b></a>
+                                    nouvel utilisateur? <a href="{{ route('register') }}"><b>Créer un nouveau compte</b></a>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +156,14 @@
                                         <a href="http://webmx2018.me/panel" class="btn btn-light btn-block">Admin</a>
                                     </div>
                                     <div class="col-6">
-                                        <a href="http://webmx2018.me/panel" class="btn btn-light btn-block">Logout</a>
+                                        <a href="{{ route('logout') }}" class="btn btn-light btn-block"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </div>
                                 </div>
                             </div>

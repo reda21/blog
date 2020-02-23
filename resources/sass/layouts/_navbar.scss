@@ -67,6 +67,11 @@
                     padding: 14px;
                     width: 100%;
                 }
+
+                input[type=checkbox]{
+                    right: unset;
+                    left: 0;
+                }
             }
 
         }

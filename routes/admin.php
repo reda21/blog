@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('admin.index');
 });
+
+Route::get('/tableau', function () {
+    return view('admin.tableau');
+});
+

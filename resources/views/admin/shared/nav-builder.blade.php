@@ -1,64 +1,45 @@
-<?php
-/*
-    $data = $menuel['elements']
-*/
-
-if(!function_exists('renderDropdown')){
-    function renderDropdown($data){
-        if(array_key_exists('slug', $data) && $data['slug'] === 'dropdown'){
-            echo '<li class="c-sidebar-nav-dropdown">';
-            echo '<a class="c-sidebar-nav-dropdown-toggle" href="#">';
-            if($data['hasIcon'] === true && $data['iconType'] === 'coreui'){
-                echo '<i class="' . $data['icon'] . ' c-sidebar-nav-icon"></i>';    
-            }
-            echo $data['name'] . '</a>';
-            echo '<ul class="c-sidebar-nav-dropdown-items">';
-            renderDropdown( $data['elements'] );
-            echo '</ul></li>';
-        }else{
-            for($i = 0; $i < count($data); $i++){
-                if( $data[$i]['slug'] === 'link' ){
-                    echo '<li class="c-sidebar-nav-item">';
-                    echo '<a class="c-sidebar-nav-link" href="' . $data[$i]['href'] . '">';
-                    echo '<span class="c-sidebar-nav-icon"></span>' . $data[$i]['name'] . '</a></li>';
-                }elseif( $data[$i]['slug'] === 'dropdown' ){
-                    renderDropdown( $data[$i] );
-                }
-            }
-        }
-    }
-}
-?>
-
-      <div class="c-sidebar-brand"><img class="c-sidebar-brand-full" src="/assets/brand/coreui-base-white.svg" width="118" height="46" alt="CoreUI Logo"><img class="c-sidebar-brand-minimized" src="assets/brand/coreui-signet-white.svg" width="118" height="46" alt="CoreUI Logo"></div>
-        <ul class="c-sidebar-nav">
-        @if(isset($appMenus['sidebar menu']))
-            @foreach($appMenus['sidebar menu'] as $menuel)
-                @if($menuel['slug'] === 'link')
-                    <li class="c-sidebar-nav-item">
-                        <a class="c-sidebar-nav-link" href="{{ $menuel['href'] }}">
-                        @if($menuel['hasIcon'] === true)
-                            @if($menuel['iconType'] === 'coreui')
-                                <i class="{{ $menuel['icon'] }} c-sidebar-nav-icon"></i>
-                            @endif
-                        @endif 
-                        {{ $menuel['name'] }}
-                        </a>
-                    </li>
-                @elseif($menuel['slug'] === 'dropdown')
-                    <?php renderDropdown($menuel) ?>
-                @elseif($menuel['slug'] === 'title')
-                    <li class="c-sidebar-nav-title">
-                        @if($menuel['hasIcon'] === true)
-                            @if($menuel['iconType'] === 'coreui')
-                                <i class="{{ $menuel['icon'] }} c-sidebar-nav-icon"></i>
-                            @endif
-                        @endif 
-                        {{ $menuel['name'] }}
-                    </li>
-                @endif
-            @endforeach
-        @endif
-        </ul>
-        <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
+<div class="c-sidebar-brand">
+    Webmx Admin
+</div>
+<ul class="c-sidebar-nav ps">
+    <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link c-active" href="/">
+            <i class="cil-speedometer c-sidebar-nav-icon"></i>
+            Dashboard
+        </a>
+    </li>
+    <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="/login">
+            <i class="cil-account-logout c-sidebar-nav-icon"></i>
+            Login
+        </a>
+    </li>
+    <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="/register">
+            <i class="cil-account-logout c-sidebar-nav-icon"></i>
+            Register
+        </a>
+    </li>
+    <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="https://coreui.io">
+            <i class="cil-cloud-download c-sidebar-nav-icon"></i>
+            Download CoreUI
+        </a>
+    </li>
+    <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="https://coreui.io/pro/">
+            <i class="cil-layers c-sidebar-nav-icon"></i>
+            Try CoreUI PRO
+        </a>
+    </li>
+    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;">
+        </div>
     </div>
+    <div class="ps__rail-y" style="top: 0px; right: 0px;">
+        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;">
+        </div>
+    </div>
+</ul>
+<button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
+        data-class="c-sidebar-minimized"></button>

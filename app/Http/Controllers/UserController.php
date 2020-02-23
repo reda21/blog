@@ -23,6 +23,7 @@ class UserController extends Controller
 
     /**
      * afficher le profile
+     * @route Route::get('{user?}', ['uses' => 'UserController@members']);
      * @param ?int $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

@@ -14,6 +14,7 @@
         ]) !!};
     </script>
     <script src="{{ mix('/js/app.js')  }}" defer></script>
+    @yield('css')
 
     <!-- Style-->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">

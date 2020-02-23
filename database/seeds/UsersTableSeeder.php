@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $user = factory(User::class)
             ->create([
