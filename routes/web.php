@@ -51,5 +51,8 @@ Route::get('test', function () {
     return User::all();
 });
 
+Route::get("privacy", fn() => "privacy");
+Route::get("service", fn() => "service");
+
 
 
