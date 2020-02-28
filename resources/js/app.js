@@ -29,7 +29,10 @@ window.Vue.config.performance = true;
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+require("./directives")
+
 require("./includes")
+
 import store from "./store"
 import components from "./components";
 
@@ -87,5 +90,3 @@ const app = new Vue({
     },
 
 });
-
-

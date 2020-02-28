@@ -1,0 +1,965 @@
+{
+    "packages": {
+        "mtrajano/laravel-swagger": {
+            "dev-analysis-KZRRrV": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "dev-analysis-KZRRrV",
+                "version_normalized": "dev-analysis-KZRRrV",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "6113bca5474f1c8efd0a73402e9d1a7f41c81ae3"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/6113bca5474f1c8efd0a73402e9d1a7f41c81ae3",
+                    "reference": "6113bca5474f1c8efd0a73402e9d1a7f41c81ae3",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2020-02-17T23:42:15+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "php": ">=7.1",
+                    "phpdocumentor/reflection-docblock": "^4.3",
+                    "swagger-api/swagger-ui": "^3.25"
+                },
+                "require-dev": {
+                    "ext-json": "*",
+                    "orchestra/testbench": "^3.8 || ^4.0",
+                    "phpunit/phpunit": "7.5.* || 8.3.*",
+                    "laravel/passport": "^7.5 || ^8.0"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option",
+                    "ext-json": "Required to use the JSON output option"
+                },
+                "uid": 3620804
+            },
+            "dev-master": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "dev-master",
+                "version_normalized": "9999999-dev",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "f265ffc7f7577960ee43f974c45e3132dd992a6a"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/f265ffc7f7577960ee43f974c45e3132dd992a6a",
+                    "reference": "f265ffc7f7577960ee43f974c45e3132dd992a6a",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2020-02-06T02:40:39+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "php": ">=7.0",
+                    "orchestra/testbench": "~4.0",
+                    "phpunit/phpunit": "8.3.*",
+                    "laravel/passport": "^8.0"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 2053751
+            },
+            "dev-passport-auth": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "dev-passport-auth",
+                "version_normalized": "dev-passport-auth",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "c2000efca14f4bb0072037699e23cfe2f619851e"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/c2000efca14f4bb0072037699e23cfe2f619851e",
+                    "reference": "c2000efca14f4bb0072037699e23cfe2f619851e",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2019-12-30T04:09:14+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "php": ">=7.0",
+                    "orchestra/testbench": "~4.0",
+                    "phpunit/phpunit": "8.3.*",
+                    "laravel/passport": "^8.0"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3488649
+            },
+            "v0.1.0": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.1.0",
+                "version_normalized": "0.1.0.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "7865169a2f65455cabcd70a7817f023627956612"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/7865169a2f65455cabcd70a7817f023627956612",
+                    "reference": "7865169a2f65455cabcd70a7817f023627956612",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2018-03-27T13:27:19+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require-dev": {
+                    "orchestra/testbench": "~3.0",
+                    "phpunit/phpunit": "6.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 2059133
+            },
+            "v0.1.1": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.1.1",
+                "version_normalized": "0.1.1.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "63453a158af777835a29b352a27d117ad4e49bcf"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/63453a158af777835a29b352a27d117ad4e49bcf",
+                    "reference": "63453a158af777835a29b352a27d117ad4e49bcf",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2018-04-02T21:33:58+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require-dev": {
+                    "orchestra/testbench": "~3.0",
+                    "phpunit/phpunit": "6.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 2059118
+            },
+            "v0.2.0": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.2.0",
+                "version_normalized": "0.2.0.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "16c298fc5680116bf9de22fccb4ae41c213754f7"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/16c298fc5680116bf9de22fccb4ae41c213754f7",
+                    "reference": "16c298fc5680116bf9de22fccb4ae41c213754f7",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2018-04-11T13:11:52+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require-dev": {
+                    "orchestra/testbench": "~3.0",
+                    "phpunit/phpunit": "6.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 2088916
+            },
+            "v0.3.0": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.3.0",
+                "version_normalized": "0.3.0.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "1bc333bdc207f9c5d27db69f3750efc9b1b03d82"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/1bc333bdc207f9c5d27db69f3750efc9b1b03d82",
+                    "reference": "1bc333bdc207f9c5d27db69f3750efc9b1b03d82",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2018-04-29T21:50:41+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require-dev": {
+                    "orchestra/testbench": "~3.0",
+                    "phpunit/phpunit": "6.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3072852
+            },
+            "v0.4.0": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.4.0",
+                "version_normalized": "0.4.0.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "6cb7a6a9b586b24b87cf593f90896163dabdb0f9"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/6cb7a6a9b586b24b87cf593f90896163dabdb0f9",
+                    "reference": "6cb7a6a9b586b24b87cf593f90896163dabdb0f9",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2019-08-26T22:56:54+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require-dev": {
+                    "orchestra/testbench": "~3.0",
+                    "phpunit/phpunit": "6.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3187670
+            },
+            "v0.5.0": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.5.0",
+                "version_normalized": "0.5.0.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "1ada9e1273978f5f02cb61bacd9f4492baab9094"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/1ada9e1273978f5f02cb61bacd9f4492baab9094",
+                    "reference": "1ada9e1273978f5f02cb61bacd9f4492baab9094",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2019-08-28T12:50:43+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "orchestra/testbench": "~3.0",
+                    "phpunit/phpunit": "6.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3192091
+            },
+            "v0.5.1": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.5.1",
+                "version_normalized": "0.5.1.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "1033109937e5b60843dbfdccf2260d405a0c38ca"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/1033109937e5b60843dbfdccf2260d405a0c38ca",
+                    "reference": "1033109937e5b60843dbfdccf2260d405a0c38ca",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2019-08-28T13:07:09+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "orchestra/testbench": "~3.0",
+                    "phpunit/phpunit": "6.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3192160
+            },
+            "v0.5.2": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.5.2",
+                "version_normalized": "0.5.2.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "a8fe6a605999702adb0da3e5149201cbb744d481"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/a8fe6a605999702adb0da3e5149201cbb744d481",
+                    "reference": "a8fe6a605999702adb0da3e5149201cbb744d481",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2019-08-29T12:37:39+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "orchestra/testbench": "~3.0",
+                    "phpunit/phpunit": "6.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3195689
+            },
+            "v0.6.0": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.6.0",
+                "version_normalized": "0.6.0.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "56813cb05ba0bd80b394874276183f64f40d2f62"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/56813cb05ba0bd80b394874276183f64f40d2f62",
+                    "reference": "56813cb05ba0bd80b394874276183f64f40d2f62",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2019-10-21T01:23:19+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "php": ">=7.0",
+                    "orchestra/testbench": "~4.0",
+                    "phpunit/phpunit": "8.3.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3314028
+            },
+            "v0.6.1": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.6.1",
+                "version_normalized": "0.6.1.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "4b07bd85360f7d0496f96e51c115ab999621904f"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/4b07bd85360f7d0496f96e51c115ab999621904f",
+                    "reference": "4b07bd85360f7d0496f96e51c115ab999621904f",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2019-12-06T13:36:37+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "php": ">=7.0",
+                    "orchestra/testbench": "~4.0",
+                    "phpunit/phpunit": "8.3.*"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3438315
+            },
+            "v0.6.2": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.6.2",
+                "version_normalized": "0.6.2.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "45c2b0bbac7099886c3b6e0e1fbf8004b8fcae5b"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/45c2b0bbac7099886c3b6e0e1fbf8004b8fcae5b",
+                    "reference": "45c2b0bbac7099886c3b6e0e1fbf8004b8fcae5b",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2020-02-04T14:04:21+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "php": ">=7.0",
+                    "orchestra/testbench": "~4.0",
+                    "phpunit/phpunit": "8.3.*",
+                    "laravel/passport": "^8.0"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3585224
+            },
+            "v0.6.3": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.6.3",
+                "version_normalized": "0.6.3.0",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "f265ffc7f7577960ee43f974c45e3132dd992a6a"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/f265ffc7f7577960ee43f974c45e3132dd992a6a",
+                    "reference": "f265ffc7f7577960ee43f974c45e3132dd992a6a",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2020-02-06T02:40:39+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "php": ">=7.0",
+                    "orchestra/testbench": "~4.0",
+                    "phpunit/phpunit": "8.3.*",
+                    "laravel/passport": "^8.0"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3589683
+            },
+            "v0.7.0-alpha": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.7.0-alpha",
+                "version_normalized": "0.7.0.0-alpha",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "f265ffc7f7577960ee43f974c45e3132dd992a6a"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/f265ffc7f7577960ee43f974c45e3132dd992a6a",
+                    "reference": "f265ffc7f7577960ee43f974c45e3132dd992a6a",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2020-02-06T02:40:39+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3"
+                },
+                "require-dev": {
+                    "php": ">=7.0",
+                    "orchestra/testbench": "~4.0",
+                    "phpunit/phpunit": "8.3.*",
+                    "laravel/passport": "^8.0"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option"
+                },
+                "uid": 3620837
+            },
+            "v0.7.x-dev": {
+                "name": "mtrajano/laravel-swagger",
+                "description": "Auto generates the swagger documentation for a laravel project",
+                "keywords": [],
+                "homepage": "",
+                "version": "v0.7.x-dev",
+                "version_normalized": "0.7.9999999.9999999-dev",
+                "license": [
+                    "MIT"
+                ],
+                "authors": [
+                    {
+                        "name": "Mauricio Trajano",
+                        "email": "mauriciot1993@gmail.com"
+                    }
+                ],
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mtrajano/laravel-swagger.git",
+                    "reference": "bd4212263d28d84304d6ef37df3e110c374ba0a4"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://api.github.com/repos/mtrajano/laravel-swagger/zipball/bd4212263d28d84304d6ef37df3e110c374ba0a4",
+                    "reference": "bd4212263d28d84304d6ef37df3e110c374ba0a4",
+                    "shasum": ""
+                },
+                "type": "library",
+                "time": "2020-02-17T23:41:57+00:00",
+                "autoload": {
+                    "files": [
+                        "src/helpers.php"
+                    ],
+                    "psr-4": {
+                        "Mtrajano\\LaravelSwagger\\": "src/"
+                    }
+                },
+                "extra": {
+                    "laravel": {
+                        "providers": [
+                            "Mtrajano\\LaravelSwagger\\SwaggerServiceProvider"
+                        ]
+                    }
+                },
+                "require": {
+                    "phpdocumentor/reflection-docblock": "^4.3",
+                    "php": ">=7.1",
+                    "swagger-api/swagger-ui": "^3.25"
+                },
+                "require-dev": {
+                    "ext-json": "*",
+                    "orchestra/testbench": "^3.8 || ^4.0",
+                    "phpunit/phpunit": "7.5.* || 8.3.*",
+                    "laravel/passport": "^7.5 || ^8.0"
+                },
+                "suggest": {
+                    "ext-yaml": "Required to use the YAML output option",
+                    "ext-json": "Required to use the JSON output option"
+                },
+                "uid": 3617962
+            }
+        }
+    }
+}

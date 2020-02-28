@@ -55390,6 +55390,8 @@ window.Vue.config.performance = true;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+__webpack_require__(/*! ./directives */ "./resources/js/directives.js");
+
 __webpack_require__(/*! ./includes */ "./resources/js/includes.js");
 
 
@@ -55453,6 +55455,11 @@ var app = new Vue({
       }
     }
   }
+});
+window.unsplash = new Unsplash({
+  applicationId: "Your Application id",
+  secret: "Your Application Id secret",
+  callbackUrl: "{CALLBACK_URL}"
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
@@ -56278,6 +56285,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalAccessTokens_vue_vue_type_template_id_49962cc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/directives.js":
+/*!************************************!*\
+  !*** ./resources/js/directives.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+ // Register a global custom directive called `v-focus`
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('focus', {
+  // When the bound element is inserted into the DOM...
+  inserted: function inserted(el) {
+    // Focus the element
+    el.focus();
+  }
+}); // Register a global custom directive called `v-focus`
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('tab', {
+  // When the bound element is inserted into the DOM...
+  inserted: function inserted(el) {
+    var id = el.id;
+    var hash = window.location.hash;
+    hash && $('ul.nav a[href="' + hash + '"]').tab("show");
+    $("#" + id + ".nav-tabs a").click(function (e) {
+      $(this).tab("show");
+      window.location.hash = this.hash;
+    });
+  }
+});
 
 /***/ }),
 

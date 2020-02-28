@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
-});
+Route::get('/', ['uses' => 'Admin\DashboardController@index'] );
 
-Route::get('/tableau', function () {
-    return view('admin.tableau');
-});
+Route::get('/tableau', ['uses' => 'Admin\DashboardController@tableau'] );
 

@@ -89,7 +89,7 @@ class User extends Authenticatable implements ImplentationUser
      * @var array
      */
     protected $fillable = [
-        "username","first_name",'last_name', 'email', 'password',"email_verified_at"
+        "username", "first_name", 'last_name', 'email', 'password', "email_verified_at"
     ];
 
     /**
@@ -111,7 +111,6 @@ class User extends Authenticatable implements ImplentationUser
     ];
 
 
-
     /**
      * Build Social Relationships.
      *
@@ -119,12 +118,18 @@ class User extends Authenticatable implements ImplentationUser
      */
     public function social()
     {
-        //    return $this->hasMany(Social::class);
+        return $this->hasMany(Social::class);
     }
 
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    function getNameAttribute()
+    {
+        return $this->present()->fullName;
+
     }
 
     function getRoleNameAttribute()

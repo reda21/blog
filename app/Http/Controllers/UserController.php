@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -14,6 +15,7 @@ class UserController extends Controller
 
     /**
      * UserController constructor.
+     * @param UserRepository $userRepository
      */
     public function __construct(UserRepository $userRepository)
     {
@@ -24,10 +26,10 @@ class UserController extends Controller
     /**
      * afficher le profile
      * @route Route::get('{user?}', ['uses' => 'UserController@members']);
-     * @param ?int $user
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param string|null $user
+     * @return View
      */
-    public function members($user = null)
+    public function members(string $user = null): View
     {
         if ($user) {
             $user = $this->userRepository->findBy("username", $user);
@@ -36,5 +38,11 @@ class UserController extends Controller
         }
         $users = $this->userRepository->all()->sortBy("id");
         return view("user.memberLists", compact("users"));
+    }
+
+    public function profil_edit(Request $request): View
+    {
+        $user = $request->user();
+        return view("user.edit", compact("user"));
     }
 }

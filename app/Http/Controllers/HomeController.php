@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,29 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    /**
+     * @return View
+     */
+    public function welcome():View
+    {
+        return view('welcome');
+    }
+
+    /**
+     * @return string
+     */
+    public function privacy():string
+    {
+        return "privacy";
+    }
+
+    /**
+     * @return string
+     */
+    public function service():string
+    {
+        return "service";
     }
 }

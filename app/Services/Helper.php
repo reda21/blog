@@ -5,12 +5,19 @@ namespace App\Services;
 
 
 use App\Models\User;
+use URL;
 
 class Helper
 {
+    /**
+     * @var null adress ip
+     */
     static private $ipAddress = null;
 
-    public static function getClientIp()
+    /**
+     * @return string
+     */
+    public static function getClientIp(): string
     {
         if (self::$ipAddress)
             return self::$ipAddress;
@@ -34,13 +41,17 @@ class Helper
         return $ipAddress;
     }
 
+    /**
+     * @param object/array $d
+     * @return array
+     */
     public static function objectToArray($d): array
     {
-        if (is_object($d)){
+        if (is_object($d)) {
             // Gets the properties of the given object
             // with get_object_vars function
             $d = get_object_vars($d);
-        }elseif (is_array($d)){
+        } elseif (is_array($d)) {
             /*
               * Return array converted to object
               * Using __FUNCTION__ (Magic constant)
@@ -52,10 +63,16 @@ class Helper
         return $d;
     }
 
-    public static function getRelationshipWith(User $user,User $user2){
-        $relation = $user->getRelationshipWith($user2, [ 0, 1]);
+    /**
+     * @param User $user
+     * @param User $user2
+     * @return array
+     */
+    public static function getRelationshipWith(User $user, User $user2): array
+    {
+        $relation = $user->getRelationshipWith($user2, [0, 1]);
 
-        if($relation){
+        if ($relation) {
             return [
                 "relationExist" => true,
                 "isSender" => $relation->pivot->sender_id == $user->id,
@@ -67,5 +84,15 @@ class Helper
             "isSender" => false,
             "status" => 0
         ];
+    }
+
+    /**
+     *
+     * @param string $str
+     * @return bool
+     */
+    public static function activeUrl(string $str): bool
+    {
+        return URL::current() == $str;
     }
 }

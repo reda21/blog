@@ -16,10 +16,7 @@ use App\Services\Helper;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 use Spatie\Permission\Models\Role;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome')->name('welcome');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -47,12 +44,8 @@ Route::group(['prefix' => 'acount', 'as' => 'user'], function () {
     Route::post("notification", ["as" => ".updateConfigNotification", 'uses' => 'UserController@updateConfigNotification']);
 });
 
-Route::get('test', function () {
-    return User::all();
-});
-
-Route::get("privacy", fn() => "privacy");
-Route::get("service", fn() => "service");
+Route::get("privacy", ["use" => "HomeController@privacy"]);
+Route::get("service", ["use" => "HomeController@service"]);
 
 
 

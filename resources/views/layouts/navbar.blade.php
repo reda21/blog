@@ -129,22 +129,23 @@
                         <a class="nav-link dropdown-toggle user-action" href="#" id="navbarDropdownMenuLink"
                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="http://webmx2018.me/img/profil/default.jpg" class="avatar" alt="Avatar">
-                            Antonio Moreno
+                            {{Auth::user()->present()->fullName}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right auth" aria-labelledby="navbarDropdownMenuLink">
                             <div class="dropdown-menu-content">
                                 <div class="row">
                                     <div class="col-5">
-                                        <img src="http://webmx2018.me/img/profil/default.jpg" alt="reda21"
+                                        <img src="http://webmx2018.me/img/profil/default.jpg" alt="{{Auth::user()->username}}"
                                              class="img-fluid">
                                     </div>
                                     <div class="col-7">
-                                        <span>reda21</span>
+                                        <span>{{Auth::user()->username}}</span>
                                         <p class="text-muted small">
-                                            redacherfaoui@gmail.com
+                                            {{Auth::user()->email}}
                                         </p>
                                         <div class="divider"></div>
-                                        <a href="http://webmx2018.me/user/reda21" class="btn btn-primary btn-block">
+                                        <a href="{!! route("user", ["user" => Auth::user()->username])!!}"
+                                           class="btn btn-primary btn-block">
                                             View Profile
                                         </a>
                                     </div>
