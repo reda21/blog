@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
+use App\Http\Resources\User as UserRessouce;
 
 class UserController extends Controller
 {
@@ -18,11 +19,11 @@ class UserController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/me";
+     *     path="/me",
      *     @OA\Response(
      *          response="200",
      *          description="mon donnees",
-     *          @OA\JsonContent(type="steing", description="mon champs")
+     *          @OA\JsonContent(ref="#/components/schemas/User")
      *      )
      * )
      * UserController constructor.
@@ -38,9 +39,9 @@ class UserController extends Controller
      * @param Request $request
      * @return User
      */
-    public function me(Request $request): User
+    public function me(Request $request): UserRessouce
     {
-        return $request->user();
+        return new UserRessouce($request->user());
     }
 
     /**
