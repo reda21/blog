@@ -1,0 +1,8 @@
+openapi: 3.0.0
+info:
+  title: 'Webmx APi Documentation generation'
+  version: 1.0.0
+servers:
+  -
+    url: 'api de webmx'
+    description: 'SwaggerHUB API Mocking'

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class UserController extends Controller
 {
@@ -16,6 +17,14 @@ class UserController extends Controller
 
 
     /**
+     * @OA\Get(
+     *     path="/me";
+     *     @OA\Response(
+     *          response="200",
+     *          description="mon donnees",
+     *          @OA\JsonContent(type="steing", description="mon champs")
+     *      )
+     * )
      * UserController constructor.
      * @param UserRepository $userRepository
      * @return void
