@@ -24,7 +24,8 @@ class UserController extends Controller
      *     @OA\Response(
      *          response="200",
      *          description="mon donnees",
-     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *          @OA\JsonContent(type="string", description="mon champs")
+     *          OA\JsonContent(ref="#/components/schemas/User")
      *      )
      * )
      * UserController constructor.
@@ -37,14 +38,7 @@ class UserController extends Controller
     }
 
     /**
-     * @OA\Get(
-     *     path="/user"
-     *      @OA\Response(
-     *          response="200",
-     *          description="get all list user",
-     *          @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/User"))
-     *      )
-     * )
+
      * @param Request $request
      * @return User
      */

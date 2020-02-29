@@ -9,24 +9,5 @@
             "url": "api de webmx",
             "description": "SwaggerHUB API Mocking"
         }
-    ],
-    "paths": {
-        "/me": {
-            "get": {
-                "operationId": "App\\Http\\Controllers\\Api\\UserController::__construct",
-                "responses": {
-                    "200": {
-                        "description": "mon donnees",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/User"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    ]
 }
