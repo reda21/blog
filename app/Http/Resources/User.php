@@ -5,14 +5,17 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use OpenApi\Annotations as OA;
 
-class User extends JsonResource
+class  User extends JsonResource
 {
     /**
      * @OA\Schema(
-     *     description="model user",
-     *     title="user",
-     *     @OA\Xml(name="User")
-     *
+     *     schema="User",
+     *     description="Model User",
+     *     @OA\Property(type="integer", properties="id"),
+     *     @OA\Property(type="string", properties="name"),
+     *     @OA\Property(type="string", properties="email"),
+     *     @OA\Property(type="string", format="date-time", properties="created_at")
+     *     @OA\Property(type="string", format="date-time", properties="updated_at")
      * )
      * Transform the resource into an array.
      *
@@ -22,9 +25,7 @@ class User extends JsonResource
     public function toArray($request)
     {
         return [
-            /**
-             * @OA/Property(type="string", description="mon champs")
-             */
+
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,

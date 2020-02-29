@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/me', 'Api\UserController@me');
 
 
 Route::group(['prefix' => 'user', 'as' => 'user'], function () {
+    Route::get("/", ["as" => ".index", "uses" => 'Api\UserController@index']);
+    Route::get("/{id}", ["as" => ".sho", "uses" => 'Api\UserController@show']);
     Route::post('/{id}/{action}', ['as' => '.follow', 'uses' => 'Api\UserController@follow'])
         ->where('action', 'follow|unfollow')->middleware(['auth:api']);
 });

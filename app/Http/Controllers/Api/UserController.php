@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use OpenApi\Annotations as OA;
 use App\Http\Resources\User as UserRessouce;
 
@@ -36,12 +37,37 @@ class UserController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *     path="/user"
+     *      @OA\Response(
+     *          response="200",
+     *          description="get all list user",
+     *          @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/User"))
+     *      )
+     * )
      * @param Request $request
      * @return User
      */
     public function me(Request $request): UserRessouce
     {
         return new UserRessouce($request->user());
+    }
+
+    /**
+     * @return AnonymousResourceCollection
+     */
+    public function index(): AnonymousResourceCollection
+    {
+        return UserRessouce::collection($this->userRepository->all());
+    }
+
+    /**
+     * @param int $index
+     * @return UserRessouce
+     */
+    public function show(int $index): UserRessouce
+    {
+        return new UserRessouce($this->userRepository->find($index));
     }
 
     /**
