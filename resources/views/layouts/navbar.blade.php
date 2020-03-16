@@ -144,7 +144,7 @@
                                             {{Auth::user()->email}}
                                         </p>
                                         <div class="divider"></div>
-                                        <a href="{!! route("user", ["user" => Auth::user()->username])!!}"
+                                        <a href="{!! route("user.profile")!!}"
                                            class="btn btn-primary btn-block">
                                             View Profile
                                         </a>

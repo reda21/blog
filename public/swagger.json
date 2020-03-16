@@ -9,5 +9,245 @@
             "url": "api de webmx",
             "description": "SwaggerHUB API Mocking"
         }
-    ]
+    ],
+    "paths": {
+        "/me": {
+            "get": {
+                "tags": [
+                    "user",
+                    "get"
+                ],
+                "operationId": "App\\Http\\Controllers\\Api\\UserController::me",
+                "responses": {
+                    "200": {
+                        "description": "la response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    "petstore_auth"
+                ]
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "user",
+                    "get"
+                ],
+                "operationId": "App\\Http\\Controllers\\Api\\UserController::index",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "nompbre d'utulisateur a recupérer",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "la response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    "apiKey"
+                ]
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "user",
+                    "get"
+                ],
+                "operationId": "App\\Http\\Controllers\\Api\\UserController::show",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "la response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User-item"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    "petstore_auth"
+                ]
+            },
+            "put": {
+                "tags": [
+                    "user",
+                    "put"
+                ],
+                "operationId": "App\\Http\\Controllers\\Api\\UserController::update",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/AdminUpdateRequest"
+                },
+                "security": [
+                    "apiKey"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "title": "list utlisateur",
+                "description": "mon discrpiotion",
+                "properties": {
+                    "id": {
+                        "description": "id de model",
+                        "type": "integer",
+                        "example": "15"
+                    },
+                    "name": {
+                        "description": "fullname",
+                        "type": "string",
+                        "example": "jhon doe"
+                    },
+                    "email": {
+                        "description": "email",
+                        "type": "string",
+                        "example": "jhondeo@exemple.com"
+                    },
+                    "created_at": {
+                        "description": "created_at",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "updated_at",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "User-item": {
+                "title": "utlisateur",
+                "properties": {
+                    "description": {
+                        "description": "description",
+                        "type": "string",
+                        "example": "this example description"
+                    }
+                },
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/User"
+                    }
+                ]
+            }
+        },
+        "responses": {
+            "NotFound": {
+                "description": "le ressource n'existe pas",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "message erreur",
+                                    "type": "string",
+                                    "example": "utulisateur n'existe pas"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "id": {
+                "name": "id",
+                "in": "path",
+                "description": "id de model",
+                "required": true,
+                "schema": {
+                    "type": "integer"
+                }
+            }
+        },
+        "requestBodies": {
+            "AdminUpdateRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "name",
+                                "email"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "petstore_auth": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "http://blog.me/oauth/authorize",
+                        "scopes": {
+                            "write:pets": "modify pets in your account",
+                            "read:pets": "read your pets"
+                        }
+                    }
+                }
+            },
+            "api_key": {
+                "type": "apiKey",
+                "name": "api_key",
+                "in": "header"
+            }
+        }
+    }
 }

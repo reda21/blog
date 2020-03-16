@@ -48,7 +48,21 @@ window.confirmWithResponse = (message, accepter, Refuser, Annuler) => {
     });
 };
 //VueRessource
+import Vue from "vue"
 import VueRessource from 'vue-resource';
+
+require("bootstrap-datepicker")
+require("bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min")
+/**
+ import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
+
+ // Install BootstrapVue
+ Vue.use(BootstrapVue)
+ // Optionally install the BootstrapVue icon components plugin
+ Vue.use(IconsPlugin)
+ */
+import VueCompositionApi from '@vue/composition-api';
+Vue.use(VueCompositionApi);
 
 Vue.use(VueRessource);
 Vue.http.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
@@ -62,6 +76,9 @@ window.axios.defaults.headers.common = {
     'tok': window.Laravel.csrfToken,
     'X-Requested-With': 'XMLHttpRequest'
 };
+
+//vee-validate
+import "./vee-validate"
 
 
 

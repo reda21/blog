@@ -10,6 +10,7 @@ use OpenApi\Annotations as OA;
  * )
  *
  * @OA\Server(
+ *
  *      description="SwaggerHUB API Mocking",
  *      url="api de webmx"
  * )

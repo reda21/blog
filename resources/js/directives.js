@@ -15,10 +15,23 @@ Vue.directive('tab', {
     inserted: function (el) {
         let id = el.id;
         let hash = window.location.hash;
-        hash && $('ul.nav a[href="'+hash+'"]').tab("show");
-        $("#"+id+".nav-tabs a").click(function (e) {
+        hash && $('ul.nav a[href="' + hash + '"]').tab("show");
+        $("#" + id + ".nav-tabs a").click(function (e) {
             $(this).tab("show");
             window.location.hash = this.hash;
         });
     }
 })
+
+Vue.directive('date', {
+    inserted(el) {
+        let start = "-100y";
+        let end = '+0d' ;
+
+        window.$(el).datepicker({
+            format : "dd/mm/yyyy",
+            startDate: start,
+            endDate: end,
+        });
+    }
+});

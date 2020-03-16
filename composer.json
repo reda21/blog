@@ -16,6 +16,7 @@
         "fzaninotto/faker": "^1.4",
         "genealabs/laravel-model-caching": "*",
         "imanghafoori/laravel-widgetize": "^1.9",
+        "intervention/image": "^2.5",
         "jeroennoten/laravel-adminlte": "^3.0",
         "laracasts/presenter": "^0.2.2",
         "laravel/framework": "^6.2",

@@ -7,16 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Scripts -->
-    <script>
+    <script defer>
         @include("layouts.ConfigJs")
             window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
-    </script>
-    <script src="{{ mix('/js/app.js')  }}" defer></script>
-    @yield('css')
 
-    <!-- Style-->
+        @if (\Session::has('success'))
+            window.messageSuccess = "{{Session::get('success')}}";
+        @endif
+
+            @if (\Session::has('errors'))
+            window.messageErrors = "{{Session::get('errors')}}";
+        @endif
+    </script>
+    <script src="{{mix("/js/moment.min.js")}}" defer></script>
+    <script src="{{mix("/js/fr.js")}}" defer></script>
+    <script src="{{ mix('/js/app.js')  }}" defer></script>
+    <script>
+
+    </script>
+@yield('css')
+
+<!-- Style-->
+
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>

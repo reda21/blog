@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -47,14 +48,16 @@ class UserController extends Controller
         return view("user.memberLists", compact("users"));
     }
 
+    public function profil(Request $request)
+    {
+        $user = $request->user();
+        //     Notify::profileView($data);
+        return view('user.members', compact('user'));
+    }
+
     public function profil_edit(Request $request): View
     {
         $user = $request->user();
         return view("user.edit", compact("user"));
-    }
-
-    public function profil_update(Request $request)
-    {
-        return $request->all();
     }
 }

@@ -1,12 +1,25 @@
+/**
 module.exports = {
     testRegex: 'resources/js/test/.*.spec.js$',
+    verbose: true,
     moduleFileExtensions: [
-        'js',
-        'json',
-        'vue'
+        "js",
+        "json",
+        "vue"
     ],
-    'transform': {
-        '^.+\.js$': '<rootDir>/node_modules/babel-jest',
-        '.*\.(vue)$': '<rootDir>/node_modules/vue-jest'
-    }
+    transform: {
+        ".*\\.(vue)$": "vue-jest",
+        "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    collectCoverage: true,
+    collectCoverageFrom: [
+        "src/components/*.{js,vue}",
+        "!**/node_modules/**"
+    ],
+    coverageReporters: [
+        "html",
+        "text-summary"
+    ],
 }
+
+ */

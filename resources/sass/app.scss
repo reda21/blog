@@ -7,7 +7,20 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-@import "pages/admin";
+@import '~bootstrap-vue/src/index.scss';
+
+@import "~toastr/build/toastr.css";
+
+.toast-success {
+    background-color: #51a351;
+}
+
+.toast-error {
+    background-color: #bd362f;
+}
+
+//box
+@import "box";
 
 //font-awesome
 @import "~font-awesome/scss/font-awesome";

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TestProfileRequest extends FormRequest
+class ProfileUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,12 @@ class TestProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            "email" => "required|email",
+
         ];
     }
 
     protected function getRedirectUrl()
     {
-        return route("user.profil.edit")."#profile";
+        return route("user.edit")."#profile";
     }
 }

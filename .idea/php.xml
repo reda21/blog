@@ -99,7 +99,6 @@
       <path value="$PROJECT_DIR$/vendor/laracasts/presenter" />
       <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
       <path value="$PROJECT_DIR$/vendor/rennokki/befriended" />
-      <path value="$PROJECT_DIR$/vendor/almasaeed2010/adminlte" />
       <path value="$PROJECT_DIR$/vendor/socialiteproviders/twitter" />
       <path value="$PROJECT_DIR$/vendor/socialiteproviders/manager" />
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
@@ -121,7 +120,6 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
-      <path value="$PROJECT_DIR$/vendor/jeroennoten/laravel-adminlte" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
@@ -139,6 +137,20 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
       <path value="$PROJECT_DIR$/vendor/mtrajano/laravel-swagger" />
+      <path value="$PROJECT_DIR$/vendor/spatie/phpunit-watcher" />
+      <path value="$PROJECT_DIR$/vendor/yosymfony/resource-watcher" />
+      <path value="$PROJECT_DIR$/vendor/react/stream" />
+      <path value="$PROJECT_DIR$/vendor/react/event-loop" />
+      <path value="$PROJECT_DIR$/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/vendor/jolicode/jolinotif" />
+      <path value="$PROJECT_DIR$/vendor/clue/term-react" />
+      <path value="$PROJECT_DIR$/vendor/clue/utf8-react" />
+      <path value="$PROJECT_DIR$/vendor/clue/stdio-react" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/vendor/jeroennoten/laravel-adminlte" />
+      <path value="$PROJECT_DIR$/vendor/almasaeed2010/adminlte" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

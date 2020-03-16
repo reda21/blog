@@ -1,6 +1,6 @@
 <template>
     <div class="form-group">
-        <label>
+        <label :for="name">
             {{label}}
         </label>
         <slot></slot>
@@ -15,6 +15,10 @@
                 type: String,
                 default: ""
             },
+            name: {
+                type: String,
+                default: ""
+            },
             validate: {
                 type: Object,
                 default: {
@@ -26,13 +30,20 @@
         },
         computed: {
             isInvalid() {
-                return this.validate.dirty && this.validate.invalid
+                return this.validate.errors.length? true: false;
+//                return this.validate.dirty && this.validate.invalid
             },
             error() {
-                if (this.validate.errors) {
+                if (this.isInvalid) {
                     return this.validate.errors[0];
                 }
                 return "";
+            }
+        },
+        data() {
+            return {
+                length: this.validate.errors.length,
+                errors: this.validate.errors,
             }
         },
         provide: {

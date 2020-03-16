@@ -11,14 +11,34 @@ class MailResetConfirmationToUser extends Mailable
 {
     use Queueable, SerializesModels;
 
+
+    /**
+     * @var object
+     */
+    protected $user;
+    /**
+     * token
+     * @var string
+     */
+    protected $token;
+    /**
+     * Completely registered URL
+     * @var string
+     */
+    public $email;
+
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param object $user User model derived from `Model` class
+     * @param string $token token
+     * @param string $newEMail new mail address
      */
-    public function __construct()
+    public function __construct($user, string $token, string $newEMail)
     {
-        //
+        $this->user = $user;
+        $this->token = $token;
+        $this->email = $newEMail;
     }
 
     /**
@@ -28,6 +48,10 @@ class MailResetConfirmationToUser extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('example@example.com')
+         //   ->markdown('emails.orders.shipped')
+         ->with(['user'=>$this->user, 'token'=>$this->token, 'email'=>$this->email])
+            ->view("emails.orders.shipped");
+          //  ->with(['user'=>$this->user, 'token'=>$this->token, 'email'=>$this->email]);
     }
 }

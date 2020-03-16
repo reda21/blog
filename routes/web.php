@@ -36,9 +36,12 @@ Route::group(['prefix' => 'user', 'as' => 'user'], function () {
     Route::get('{user}/friends', ['as' => '.friends', 'uses' => 'userController@myFriends']);
 });
 
+Route::get('user/email/reset/{id}/{email}/{token}', 'MailResetController@getChangeMailAddress');
+
 Route::group(['prefix' => 'acount', 'as' => 'user'], function () {
-    Route::get('edit', ['as' => '.profil.edit', 'uses' => 'UserController@profil_edit']);
-    Route::post('edit', ['as' => '.profil.edit', 'uses' => 'UserController@profil_edit_post']);
+    Route::get('/', ['as' => '.profile', 'uses' => 'UserController@profil']);
+    Route::get('edit', ['as' => '.edit', 'uses' => 'UserController@profil_edit']);
+    Route::post('edit', ['as' => '.profil_update', 'uses' => 'UserController@profil_update']);
     Route::post("showOnline", ["as" => ".showOnline", 'uses' => 'UserController@showOnline']);
     Route::get("notification", ["as" => ".editConfigNotification", 'uses' => 'UserController@editConfigNotification']);
     Route::post("notification", ["as" => ".updateConfigNotification", 'uses' => 'UserController@updateConfigNotification']);

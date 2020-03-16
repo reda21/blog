@@ -1,6 +1,6 @@
 <div class=" form-group">
     @include("bootstrap.element.label", ["label" => $label])
-    @include("bootstrap.element.input",['placeholder' => $placeholder, "name" => $name , "value" => $value ?? ''])
+    {!! Form::text($name, $value, ["class" => 'form-control'.($class ?? ""), "placeholder" => $placeholder ?? "", "disabled" => $disabled ?? false ]) !!}
     @error($name)
     <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
     @enderror

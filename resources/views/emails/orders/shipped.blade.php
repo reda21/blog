@@ -1,12 +1,17 @@
-@component('mail::message')
-# Introduction
+{{__('mail_reset.msg_change_email')}}
 
-The body of your message.
+{{__('mail_reset.msg_move_url')}}
+{{ secure_url('user/email/reset/'.$user->id.'/'.$email.'/'.$token.'/') }}
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+・{{__('mail_reset.msg_move_url')}}
+・{{__('mail_reset.msg_user_delete')}}
 
-Thanks,<br>
-{{ config('app.name') }}
-@endcomponent
+
+※ {{__('mail_reset.msg_note')}}
+
+──────────────────────────────────　
+　Hoge
+──────────────────────────────────　
+web  : {{url('/')}}
+email: hoge@hoge.com
+──────────────────────────────────

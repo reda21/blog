@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -15,13 +16,31 @@ class MailResetConfirmationEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * Create a new event instance.
-     *
-     * @return void
+     * @var User User
      */
-    public function __construct()
+    private User $user;
+
+    /**
+     * @var string token
+     */
+    private string $token;
+    /**
+     * @var string
+     */
+    private string $newEmail;
+
+    /**
+     * Create a new event instance.
+     * @param User $user
+     * @param string $token
+     * @param string $newEmail
+     */
+    public function __construct(User $user,string $token,string $newEmail)
     {
-        //
+
+        $this->user = $user;
+        $this->token = $token;
+        $this->newEmail = $newEmail;
     }
 
     /**
@@ -31,6 +50,7 @@ class MailResetConfirmationEvent
      */
     public function broadcastOn()
     {
+
         return new PrivateChannel('channel-name');
     }
 }

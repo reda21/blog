@@ -9,11 +9,11 @@ return [
     | the confirmation class. Please add or edit these messages to suit the application you develop.
     |
     */
-    "email_confirmation_subject" => "EPlease confirm the change of e-mail",
-    "msg_change_email" => "Registration is complete",
-    "msg_move_url" => "To complete the change email, please click on this URL or copy and paste it on the international browser below and move.",
-    "msg_user_delete" => "It will be deleted after 1 hour. Please re-register if expiration date expires.",
-    "msg_note" => "Replies to this message will not be read nor responded. For inquiries, please contact from the 'inquiry' on the Hoge site.",
-    'changed_email_title' => 'Changed it to a new mail.',
-    "changed_email_body" => "Please continue to enjoy this site.",
+    "email_confirmation_subject" => "Veuillez confirmer le changement d'e-mail",
+    "msg_change_email" => "L'inscription est terminée",
+    "msg_move_url" => "Pour terminer l'e-mail de modification, cliquez sur cette URL ou copiez-collez-la sur le navigateur international ci-dessous et déplacez-vous.",
+    "msg_user_delete" => "Il sera supprimé après 1 heure. Veuillez vous réinscrire si la date d'expiration expire.",
+    "msg_note" => "Les réponses à ce message ne seront ni lues ni répondues. Pour toute demande, veuillez contacter à partir de la «demande» sur le site Hoge.",
+    'changed_email_title' => 'Changé en un nouveau mail.',
+    "changed_email_body" => "Veuillez continuer à profiter de ce site.",
 ];

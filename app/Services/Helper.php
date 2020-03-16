@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use URL;
 
 class Helper
@@ -12,7 +13,7 @@ class Helper
     /**
      * @var null adress ip
      */
-    static private $ipAddress = null;
+    static private ?string $ipAddress = null;
 
     /**
      * @return string
@@ -93,6 +94,52 @@ class Helper
      */
     public static function activeUrl(string $str): bool
     {
-        return URL::current() == $str;
+        return $str == URL::current();
+    }
+
+    /**
+     * response in success
+     * @param string $message
+     * @param array|null $data
+     * @return JsonResponse
+     */
+    public static function responseSuccess(string $message, ?array $data = null): JsonResponse
+    {
+        $json = [
+            'success' => true,
+            'message' => $message,
+        ];
+        if ($data)
+            $json["data"] = $data;
+        return response()->json($json);
+    }
+
+    /**
+     * @param $message
+     * @param int $status
+     * @return JsonResponse
+     */
+    public static function responseError($message, int $status = 400): JsonResponse
+    {
+        $json = [
+            'success' => false,
+            'error' => [
+                'code' => $status,
+                'message' => $message,
+            ],
+        ];
+        return response()->json($json, $status);
+    }
+
+    public static function getimagesize(string $file):array
+    {
+        dd($file);
+        //renumber
+        $my_image = array_values(getimagesize($file));
+
+        //use list on new array
+        list($width, $height, $type, $attr) = $my_image;
+
+        return compact('width', "height", "type", "attr");
     }
 }

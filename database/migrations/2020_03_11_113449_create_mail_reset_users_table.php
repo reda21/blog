@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateMailResetUsersTable extends Migration
 {
@@ -13,10 +13,20 @@ class CreateMailResetUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('mail_reset_users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
-        });
+        if( !Schema::hasTable('mail_reset_users') ) {
+            Schema::create('mail_reset_users', function (Blueprint $table) {
+                $table->unsignedInteger('id')->primary();
+                $table->string('email')->unique();
+                $table->string('token');
+                $table->timestamp('created_at');
+
+
+                $table->foreign('id')
+                    ->references('id')->on('users')
+                    ->onDelete('cascade')
+                   ->onUpdate('cascade');
+            });
+        }
     }
 
     /**
@@ -28,4 +38,5 @@ class CreateMailResetUsersTable extends Migration
     {
         Schema::dropIfExists('mail_reset_users');
     }
+
 }

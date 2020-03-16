@@ -13,10 +13,27 @@ use Laravel\Passport\HasApiTokens;
 use Rennokki\Befriended\Traits\Block;
 use Rennokki\Befriended\Traits\Follow;
 use Spatie\Permission\Traits\HasRoles;
+use OpenApi\Annotations as OA;
 
 /**
  * App\Models\User
+ * @OA\Schema(
+ *     schema="User",
+ *     description="mon discrpiotion",
+ *     title="list utlisateur",
+ *      @OA\Property(property="id", type="integer", description="id de model", example="15"),
+ *      @OA\Property(property="name", type="string", description="fullname", example="jhon doe"),
+ *      @OA\Property(property="email",type="string", description="email", example="jhondeo@exemple.com"),
+ *      @OA\Property(property="created_at",type="string", format="date-time", description="created_at"),
+ *      @OA\Property(property="updated_at",type="string", format="date-time", description="updated_at")
+ * )
  *
+ * @OA\Schema(
+ *     schema="User-item",
+ *     title="utlisateur",
+ *     allOf={@OA\Schema(ref="#/components/schemas/User")},
+ *     @OA\Property(property="description",type="string", description="description", example="this example description"),
+ *     )
  * @property int $id
  * @property string $username
  * @property string $email
@@ -59,6 +76,8 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUsername($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User withCacheCooldownSeconds($seconds = null)
  * @mixin \Eloquent
+ *
+ *
  */
 class User extends Authenticatable implements ImplentationUser
 {
@@ -130,6 +149,24 @@ class User extends Authenticatable implements ImplentationUser
     {
         return $this->present()->fullName;
 
+    }
+
+    function showProfile()
+    {
+        //{  birthday:'{{$user->profile->birthday}}', description:'{{$user->profile->description}}' }
+        return [
+            "location" => $this->profile->location,
+            "sexe" => $this->profile->sexe,
+            "email_hidden" => $this->email_show ? 0 : 1,
+            "facebook_username" => $this->profile->facebook_username,
+            "twitter_username" => $this->profile->twitter_username,
+            "pinterest_username" => $this->profile->pinterest_username,
+            "google_plus_username" => $this->profile->google_plus_username,
+            "dribbble_username" => $this->profile->dribbble_username,
+            "github_username" => $this->profile->github_username,
+            "birthday" => $this->profile->birthday ? $this->profile->birthday->format("d/m/Y") : "",
+            "description" => $this->profile->description,
+        ];
     }
 
     function getRoleNameAttribute()

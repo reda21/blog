@@ -1,76 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://blog.me/css/bootstrap.css">
-    <title>Document</title>
-</head>
-<body>
-<div class="container">
-    <div class="row">
+@component("user.layout.template-user", ["user" => $user])
+    <div class="row mt-3">
         <div class="col">
-            <div class="card mt-4">
-                <div class="card-header">
-                    <ul id="myTab" role="tablist" class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item"><a id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                                aria-controls="profile" aria-selected="false" class="nav-link">Paramètres
-                                de profil</a></li>
-                        <li class="nav-item"><a id="test-tab" data-toggle="tab" href="#test" role="tab"
-                                                aria-controls="test" aria-selected="true" class="nav-link active">Paramètres
-                                du compte</a></li>
-                        <li class="nav-item"><a id="avatar-tab" data-toggle="tab" href="#avatar" role="tab"
-                                                aria-controls="avatar" aria-selected="false" class="nav-link">Image du
-                                profile</a></li>
-                        <li class="nav-item"><a id="cover-tab" data-toggle="tab" href="#cover" role="tab"
-                                                aria-controls="cover" aria-selected="false" class="nav-link">Imagde du
-                                couverture</a></li>
-                        <li class="nav-item"><a id="admin-tab" data-toggle="tab" href="#admin" role="tab"
-                                                aria-controls="admin" aria-selected="false" class="nav-link">Administration
-                                de compte</a></li>
-                    </ul>
-                </div>
+            <edit-profile :user="{username:'reda', age:15, email: 'redacherfaoui@gmail.com'}"></edit-profile>
+            <edit-account></edit-account>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img class="card-img-top"
+                     src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_170a1738078%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_170a1738078%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.1953125%22%20y%3D%2296.3%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                     alt="Card image cap">
                 <div class="card-body">
-                    <div id="myTabContent" class="tab-content">
-                        <div id="profile" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade">
-                            <p>profile</p>
-                        </div>
-                        <div id="account" role="tabpanel" aria-labelledby="account-tab" class="tab-pane fade">
-                            <p>account</p>
-                        </div>
-                        <div id="avatar" role="tabpanel" aria-labelledby="avatar-tab" class="tab-pane fade">
-                            <p>avatar</p>
-                        </div>
-                        <div id="cover" role="tabpanel" aria-labelledby="cover-tab" class="tab-pane fade">
-                            <p>cover</p>
-                        </div>
-                        <div id="admin" role="tabpanel" aria-labelledby="admin-tab" class="tab-pane fade">
-                            <p>admin</p>
-                        </div>
-                        <div id="test" role="tabpanel" aria-labelledby="test-tab" class="tab-pane fade active show">
-                            <p>test</p>
-                        </div>
-                    </div>
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<script src="http://blog.me/js/jquery.js"></script>
-<script src="http://blog.me/js/popper.js"></script>
-<script src="http://blog.me/js/bootstrap.js"></script>
-<script>
-    $(function () {
-        var hash = window.location.hash;
-        hash && $('ul.nav a[href="'+hash+'"]').tab("show");
-        $(".nav-tabs a").click(function (e) {
-            $(this).tab("show");
-            window.location.hash = this.hash;
-        });
-    })
-</script>
-</body>
-</html>
+@endcomponent

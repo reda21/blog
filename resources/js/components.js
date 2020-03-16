@@ -1,9 +1,13 @@
-import friend from "./components/friends";
 import Vue from "vue"
 //layout
-import bButton from "./components/layouts/button"
 
-Vue.component("bButton", bButton);
+const layout = require.context('./components/layouts', true, /\.vue$/i)
+
+layout.keys().map(key => {
+    console.log(key);
+})
+
+layout.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], layout(key).default))
 
 //passport
 Vue.component(
@@ -22,6 +26,15 @@ Vue.component(
 );
 
 //conponent
+import friend from "./components/user/friends";
+import EditProfile from "./components/user/editProfile"
+import editAccount from "./components/user/editAccount"
+import editAvatar from "./components/user/editAvatar"
+
 export default {
     friends: friend,
+    EditProfile,
+    editAccount,
+    editAvatar
 }
+

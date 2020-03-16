@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ImageSize;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ChangeAvatarRequest extends FormRequest
@@ -13,7 +14,7 @@ class ChangeAvatarRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,7 @@ class ChangeAvatarRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+     //       "avatar" => ["mimes:jpg,jpeg,bmp,png", "max:2000", new ImageSize(200, 200)]
         ];
     }
 }

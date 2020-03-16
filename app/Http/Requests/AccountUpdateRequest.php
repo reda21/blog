@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class AccountUpdateRequest extends FormRequest
 {
     /**
@@ -13,7 +14,7 @@ class AccountUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,12 @@ class AccountUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $username = request()->user()->username;
         return [
-            //
+            'username' => 'required|min:3|max:30|unique:users,username,'.$username.',username|',
+            'email' => 'required|email|max:255||unique:users,email,'.$username.',username',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
         ];
     }
 }
