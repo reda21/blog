@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Auth;
 
 class UserController extends Controller
 {
@@ -14,12 +15,18 @@ class UserController extends Controller
     private $userRepository;
 
     /**
+     * @var \Illuminate\Contracts\Auth\Authenticatable|null
+     */
+    private $me;
+
+    /**
      * UserController constructor.
      * @param UserRepository $userRepository
      */
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+
         $this->middleware('auth');
     }
 
@@ -44,5 +51,10 @@ class UserController extends Controller
     {
         $user = $request->user();
         return view("user.edit", compact("user"));
+    }
+
+    public function profil_update(Request $request)
+    {
+        return $request->all();
     }
 }
