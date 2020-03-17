@@ -1,7 +1,7 @@
 <div class="card profile mb-3">
-    <img src="http://webmx2018.me/img/photo1.jpg" class="card-img-top" alt="...">
+    <img src="{{asset($user->cover)}}" class="card-img-top" alt="...">
     <div class="card-body pt-5">
-        <img src="http://webmx2018.me/img/profil/default.jpg" alt="profile-image" class="card-image-profile">
+        <img src="{{asset($user->avatar)}}" alt="profile-image" class="card-image-profile">
         <h5 class="card-title">
             <i class="fa fa-circle text-success"></i>
             <a href="{{$user->present()->urlProfile}}">{{$user->username}}</a>

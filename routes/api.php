@@ -15,11 +15,13 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/me', 'Api\UserController@me');
 
-Route::middleware('auth:api')->post("profile", ["as" => "user.profile", "uses" => 'Api\UserController@profileUpdate']);
+Route::middleware('auth:api')->post("profile", ["uses" => 'Api\UserController@profileUpdate']);
 
-Route::middleware('auth:api')->post("account", ["as" => "user.profile", "uses" => 'Api\UserController@accountUpdate']);
+Route::middleware('auth:api')->post("account", ["uses" => 'Api\UserController@accountUpdate']);
 
-Route::middleware('auth:api')->post('avatar', ['as' => '.changeAvatar', 'uses' => 'Api\UserController@changeAvatar']);
+Route::middleware('auth:api')->post('avatar', ['uses' => 'Api\UserController@changeAvatar']);
+
+Route::middleware('auth:api')->post('cover', ['uses' => 'Api\UserController@changeCover']);
 
 
 Route::group(['prefix' => 'user', 'as' => 'user'], function () {

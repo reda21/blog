@@ -1,18 +1,18 @@
 <template>
     <div class="card my-3">
         <div class="card-header">
-            Changer L'Avatar
+            Changer le cover
         </div>
         <div class="card-body">
             <div class="card-img text-center">
-                <img :src="img" alt="User profile picture" class="profile-user-img img-thumbnail img-circle">
+                <img :src="img" alt="User profile picture" class="cover-user-img img-thumbnail">
             </div>
             <button @click.prevent="open" class="btn btn-outline-primary btn-block">
                 Uploader image profile
             </button>
-            <upload field="avatar" @crop-upload-success="cropUploadSuccess" @crop-upload-fail="cropUploadFail"
-                       v-model="show" :width="200" :height="200" :url="urlApi" :params="params" noCircle noSquare
-                       lang-type="fr" method="POST"></upload>
+            <upload field="cover" @crop-upload-success="cropUploadSuccess" @crop-upload-fail="cropUploadFail"
+                    v-model="show" :width="1000" :height="300" :url="urlApi" :params="params" noCircle noSquare
+                    lang-type="fr" method="POST"></upload>
         </div>
     </div>
 </template>
@@ -22,16 +22,16 @@
     import {debounce} from 'lodash';
 
     export default {
-        name: "editAvatar",
+        name: "editCover",
         components: {myUpload},
-        props:{
-            img:String
+        props: {
+            img: String
         },
         data() {
             return {
                 show: false,
                 params: {
-                    name: 'avatar',
+                    name: 'cover',
                     method: "POST"
                 },
                 noCircle: true,
@@ -39,27 +39,26 @@
                     smail: '*_~',
                     'X-CSRF-TOKEN': window.Laravel.csrfToken,
                     'X-Requested-With': 'XMLHttpRequest',
-                    'Content-Type': 'application/json',
                     common: {
                         'X-CSRF-TOKEN': window.Laravel.csrfToken,
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Content-Type': 'application/json'
+                        'X-Requested-With': 'XMLHttpRequest'
                     }
                 },
-                urlApi: ApiUrl + "/avatar"
+                urlApi: ApiUrl + "/cover"
             }
         },
         methods: {
             open() {
                 this.show = true;
             },
-            close(){
+            close() {
                 this.show = false;
             },
             cropUploadSuccess(data, field) {
                 console.log('-------- upload success --------');
                 this.close();
                 this.href();
+                console.log({data: data.img});
             },
 
             cropUploadFail(status, field) {
@@ -93,8 +92,7 @@
 </script>
 
 <style>
-    .profile-user-img {
-        width: 200px;
+    .cover-user-img {
         margin: 15px auto;
     }
 

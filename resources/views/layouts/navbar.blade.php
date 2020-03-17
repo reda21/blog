@@ -128,14 +128,14 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle user-action" href="#" id="navbarDropdownMenuLink"
                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="http://webmx2018.me/img/profil/default.jpg" class="avatar" alt="Avatar">
+                            <img src="{{asset(Auth::user()->avatar)}}" class="avatar" alt="Avatar">
                             {{Auth::user()->present()->fullName}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right auth" aria-labelledby="navbarDropdownMenuLink">
                             <div class="dropdown-menu-content">
                                 <div class="row">
                                     <div class="col-5">
-                                        <img src="http://webmx2018.me/img/profil/default.jpg" alt="{{Auth::user()->username}}"
+                                        <img src="{{asset(Auth::user()->avatar)}}" alt="{{Auth::user()->username}}"
                                              class="img-fluid">
                                     </div>
                                     <div class="col-7">

@@ -8,7 +8,8 @@ $profile = json_encode($user->showProfile());
             <edit-profile :user='{!! $profile !!}'></edit-profile>
         </div>
         <div class="col-md-6">
-            <edit-avatar></edit-avatar>
+            <edit-avatar img="{{asset($user->avatar)}}"></edit-avatar>
+            <edit-cover img="{{asset($user->cover)}}"></edit-cover>
         </div>
     </div>
 @endcomponent

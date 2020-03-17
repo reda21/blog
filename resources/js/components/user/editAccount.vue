@@ -32,10 +32,10 @@
                     </validation-provider>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-lg btn-primary btn-block">start</button>
+                            <button type="submit" class="btn btn-outline-primary btn-block">start</button>
                         </div>
                         <div class="col">
-                            <button type="button" @click.prevent="testing" class="btn btn-lg btn-danger btn-block">end
+                            <button type="button" @click.prevent="testing" class="btn btn-outline-danger btn-block">end
                             </button>
                         </div>
                     </div>

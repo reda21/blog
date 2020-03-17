@@ -5,15 +5,16 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountUpdateRequest;
 use App\Http\Requests\AdminUpdateRequest;
-use App\Http\Requests\ChangeAvatarRequest;
+use App\Http\Requests\ChangeCoverRequest;
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\User;
 use App\Repositories\UserRepository;
+use App\Rules\ImageSize;
 use App\Services\Helper;
+use App\Services\Image as ImageDB;
 use App\Traits\MailResetUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use OpenApi\Annotations as OA;
 use App\Http\Resources\User as UserRessouce;
@@ -141,16 +142,16 @@ class UserController extends Controller
     {
         $me = $request->user();
         $data = [
-            "sexe" => in_array($request->sexe, ['-', 'm', 'f']) ? $request->sexe : "",
-            "location" => $request->location,
-            "bio" => $request->bio,
-            "twitter_username" => $request->twitter_username,
-            "facebook_username" => $request->facebook_username,
-            "google_plus_username" => $request->google_plus_username,
-            "pinterest_username" => $request->google_plus_username,
-            "dribbble_username" => $request->dribbble_username,
-            "github_username" => $request->github_username,
-            "url" => $request->url
+            'sexe' => in_array($request->sexe, ['-', 'm', 'f']) ? $request->sexe : "",
+            'location' => $request->location,
+            'bio' => $request->bio,
+            'twitter_username' => $request->twitter_username,
+            'facebook_username' => $request->facebook_username,
+            'google_plus_username' => $request->google_plus_username,
+            'pinterest_username' => $request->google_plus_username,
+            'dribbble_username' => $request->dribbble_username,
+            'github_username' => $request->github_username,
+            'url' => $request->url
         ];
 
         $me->email_show = $request->email_hidden ? 0 : 1;
@@ -182,17 +183,47 @@ class UserController extends Controller
         return Helper::responseError("Errors!", 500);
     }
 
-    public function changeAvatar(ChangeAvatarRequest $request)
+    public function changeAvatar(Request $request)
     {
-        dd($_FILES['avatar']);
-        //     dd($request->file('avatar')->getFileInfo());
+        $validatedData = Validator::make($request->all(), [
+            "avatar" => ['required', "image", "max:2000", new ImageSize(200, 200)]
+        ]);
+        if ($validatedData->fails()) return Helper::responseErrorValidator($validatedData->errors()->toArray());
         $me = $request->user();
-        $file = $request->avatar;
+        $file = $request->avatar->getPathName();
         $image = Image::make($file);
+        $imageName = sprintf("img/profile_images/%s.avatar.jpg", $me->username);
+        $save = $image->save(public_path()."/".$imageName);
 
-        dd($image);
-        Storage::disk('local')->putFileAs('/', $image, 'avatar.jpg');
+        if($save) {
+            $me->profile->update([
+                'avatar' => $imageName,
+                'avatar_status' => ImageDB::AVATAR_STATUS_LOCALE,
+            ]);
+            return Helper::responseSuccess("image a été telechargé");
+        }
+        return Helper::responseError("operation érronée", 422);
 
-        return $file->getFileInfo();
+    }
+
+    public function changeCover(Request $request)
+    {
+        $validatedData = Validator::make($request->all(), [
+            "cover" => ['required', "image", "max:2000", new ImageSize(300, 1000)]
+        ]);
+        if ($validatedData->fails()) return Helper::responseErrorValidator($validatedData->errors()->toArray());
+        $me = $request->user();
+        $file = $request->cover->getPathName();
+        $image = Image::make($file);
+        $imageName = sprintf("img/cover_images/%s.cover.jpg", $me->username);
+        $save = $image->save(public_path()."/".$imageName);
+
+        if($save) {
+            $me->profile->update([
+                'cover' => $imageName,
+            ]);
+            return Helper::responseSuccess("image a été telechargé");
+        }
+        return Helper::responseError("operation érronée", 422);
     }
 }

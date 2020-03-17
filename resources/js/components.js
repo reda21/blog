@@ -30,11 +30,13 @@ import friend from "./components/user/friends";
 import EditProfile from "./components/user/editProfile"
 import editAccount from "./components/user/editAccount"
 import editAvatar from "./components/user/editAvatar"
+import editCover from "./components/user/editCover"
 
 export default {
     friends: friend,
     EditProfile,
     editAccount,
-    editAvatar
+    editAvatar,
+    editCover,
 }
 

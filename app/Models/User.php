@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Presenters\UserPresenter;
+use App\Services\Image;
 use App\Services\ImplentationUser;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -169,7 +170,7 @@ class User extends Authenticatable implements ImplentationUser
         ];
     }
 
-    function getRoleNameAttribute()
+    public function getRoleNameAttribute()
     {
         if ($this->roles()->count()) {
             return $this->roles->first()->name;
@@ -177,5 +178,16 @@ class User extends Authenticatable implements ImplentationUser
 
         return null;
 
+    }
+
+    public function getAvatarAttribute()
+    {
+        return Image::getAvatarUser($this);
+
+    }
+
+    public function getCoverAttribute()
+    {
+        return Image::getCoverUser($this);
     }
 }

@@ -131,9 +131,21 @@ class Helper
         return response()->json($json, $status);
     }
 
+    /**
+     * @param string $errors
+     * @return JsonResponse
+     */
+    public static function responseErrorValidator($errors): JsonResponse
+    {
+        $json = [
+            "message" => "The given data was invalid.",
+            'errors' => $errors,
+        ];
+        return response()->json($json, 422);
+    }
+
     public static function getimagesize(string $file):array
     {
-        dd($file);
         //renumber
         $my_image = array_values(getimagesize($file));
 

@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use App\Services\Helper;
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Image\Facades\Image;
 
 class ImageSize implements Rule
 {
@@ -37,9 +38,8 @@ class ImageSize implements Rule
      */
     public function passes($attribute, $value)
     {
-        $file = $value->path();
-        $info = Helper::getimagesize($file);
-
+   //     dd(Helper::getimagesize($value), $value);
+        $info = Helper::getimagesize($value);
         if ($info["width"] >= $this->width && $info["height"] >= $this->height) return true;
         return false;
     }

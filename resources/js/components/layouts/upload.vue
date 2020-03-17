@@ -269,14 +269,14 @@
 
                 // 生成图片预览的容器大小
                 previewContainer: {
-                    width: 100,
-                    height: 100
+                    width: 200,
+                    height: 200
                 },
 
                 // 原图容器宽高
                 sourceImgContainer: { // sic
-                    width: 240,
-                    height: 184 // 如果生成图比例与此一致会出现bug，先改成特殊的格式吧，哈哈哈
+                    width: 350,//240
+                    height: 240 //184 如果生成图比例与此一致会出现bug，先改成特殊的格式吧，哈哈哈
                 },
 
                 // 原图展示属性
@@ -851,6 +851,7 @@
                     })
                     if (that.value) {
                         that.loading = 2;
+                        that.step = 1;
                         that.$emit('crop-upload-success', response.data, field, ki);
                     }
                 } catch (error) {
@@ -880,7 +881,6 @@
 </style> -->
 
 <style>
-    @charset "UTF-8";
     @-webkit-keyframes vicp_progress {
         0% {
             background-position-y: 0;
@@ -956,7 +956,7 @@
         right: 0;
         margin: auto;
         width: 600px;
-        height: 330px;
+        height: 400px;
         padding: 25px;
         background-color: #fff;
         border-radius: 2px;
@@ -1099,8 +1099,8 @@
     .vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container {
         position: relative;
         display: block;
-        width: 240px;
-        height: 180px;
+        width: 350px;
+        height: 240px;
         background-color: #e5e5e0;
         overflow: hidden;
     }
@@ -1134,7 +1134,7 @@
 
     .vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate {
         position: relative;
-        width: 240px;
+        width: 350px;
         height: 18px;
     }
 
@@ -1170,7 +1170,7 @@
     .vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range {
         position: relative;
         margin: 30px 0 10px 0;
-        width: 240px;
+        width: 350px;
         height: 18px;
     }
 

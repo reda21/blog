@@ -10,9 +10,9 @@
             <div class="divide30"></div>
             <div class="col">
                 <div class="card profile">
-                    <img src="http://webmx2018.me/img/photo1.jpg" class="card-img-top" alt="...">
+                    <img src="{{asset($user->cover)}}" class="card-img-top" alt="...">
                     <div class="card-body pt-5 pb-0">
-                        <img src="http://webmx2018.me/img/profil/default.jpg" alt="profile-image"
+                        <img src="{{asset($user->avatar)}}" alt="profile-image"
                              class="card-image-profile">
                         <h5 class="card-title">
                             <i class="fa fa-circle text-success"></i>

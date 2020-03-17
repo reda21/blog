@@ -4329,14 +4329,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       },
       // 生成图片预览的容器大小
       previewContainer: {
-        width: 100,
-        height: 100
+        width: 200,
+        height: 200
       },
       // 原图容器宽高
       sourceImgContainer: {
         // sic
-        width: 240,
-        height: 184 // 如果生成图比例与此一致会出现bug，先改成特殊的格式吧，哈哈哈
+        width: 350,
+        //240
+        height: 240 //184 如果生成图比例与此一致会出现bug，先改成特殊的格式吧，哈哈哈
 
       },
       // 原图展示属性
@@ -4915,6 +4916,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
                 if (that.value) {
                   that.loading = 2;
+                  that.step = 1;
                   that.$emit('crop-upload-success', response.data, field, ki);
                 }
 
@@ -5987,23 +5989,26 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     myUpload: vue_image_crop_upload__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  props: {
+    img: String
+  },
   data: function data() {
     return {
-      user: {
-        avatar: "http://webmx2018.me/img/profil/default.jpg"
-      },
       show: false,
       params: {
         name: 'avatar',
         method: "POST"
       },
+      noCircle: true,
       headers: {
         smail: '*_~',
         'X-CSRF-TOKEN': window.Laravel.csrfToken,
         'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json',
         common: {
           'X-CSRF-TOKEN': window.Laravel.csrfToken,
-          'X-Requested-With': 'XMLHttpRequest'
+          'X-Requested-With': 'XMLHttpRequest',
+          'Content-Type': 'application/json'
         }
       },
       urlApi: ApiUrl + "/avatar"
@@ -6019,6 +6024,112 @@ __webpack_require__.r(__webpack_exports__);
     cropUploadSuccess: function cropUploadSuccess(data, field) {
       console.log('-------- upload success --------');
       this.close();
+      this.href();
+    },
+    cropUploadFail: function cropUploadFail(status, field) {
+      console.log('-------- upload fail --------');
+      console.log(status);
+      console.log('field: ' + field);
+    },
+    displayWindowSize: function displayWindowSize() {
+      // Get width and height of the window excluding scrollbars
+      var w = document.documentElement.clientWidth;
+      var h = document.documentElement.clientHeight;
+      var el = window.$(".vue-image-crop-upload .vicp-wrap");
+      if (w < 660) el.width(w - 45);else el.width(600);
+      console.log({
+        w: w,
+        h: h,
+        el: el
+      });
+    },
+    href: function href() {
+      var url = window.location.href;
+      window.location.href = url;
+    }
+  },
+  mounted: function mounted() {
+    // Attaching the event listener function to window's resize event
+    window.addEventListener("resize", Object(lodash__WEBPACK_IMPORTED_MODULE_1__["debounce"])(this.displayWindowSize, 250)); // Calling the function for the first time
+
+    this.displayWindowSize();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/editCover.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/user/editCover.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_image_crop_upload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-image-crop-upload */ "./node_modules/vue-image-crop-upload/upload-2.vue");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "editCover",
+  components: {
+    myUpload: vue_image_crop_upload__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    img: String
+  },
+  data: function data() {
+    return {
+      show: false,
+      params: {
+        name: 'cover',
+        method: "POST"
+      },
+      noCircle: true,
+      headers: {
+        smail: '*_~',
+        'X-CSRF-TOKEN': window.Laravel.csrfToken,
+        'X-Requested-With': 'XMLHttpRequest',
+        common: {
+          'X-CSRF-TOKEN': window.Laravel.csrfToken,
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      },
+      urlApi: ApiUrl + "/cover"
+    };
+  },
+  methods: {
+    open: function open() {
+      this.show = true;
+    },
+    close: function close() {
+      this.show = false;
+    },
+    cropUploadSuccess: function cropUploadSuccess(data, field) {
+      console.log('-------- upload success --------');
+      this.close();
+      this.href();
       console.log({
         data: data.img
       });
@@ -6039,6 +6150,10 @@ __webpack_require__.r(__webpack_exports__);
         h: h,
         el: el
       });
+    },
+    href: function href() {
+      var url = window.location.href;
+      window.location.href = url;
     }
   },
   mounted: function mounted() {
@@ -6261,6 +6376,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$refs.form.setErrors({
         birthday: ['This email is already taken']
       });
+    },
+    href: function href() {
+      var url = window.location.href;
+      window.location.href = url;
     }
   },
   computed: {},
@@ -13110,7 +13229,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n@charset \"UTF-8\";\n@-webkit-keyframes vicp_progress {\n0% {\n        background-position-y: 0;\n}\n100% {\n        background-position-y: 40px;\n}\n}\n@keyframes vicp_progress {\n0% {\n        background-position-y: 0;\n}\n100% {\n        background-position-y: 40px;\n}\n}\n@-webkit-keyframes vicp {\n0% {\n        opacity: 0;\n        transform: scale(0) translatey(-60px);\n}\n100% {\n        opacity: 1;\n        transform: scale(1) translatey(0);\n}\n}\n@keyframes vicp {\n0% {\n        opacity: 0;\n        transform: scale(0) translatey(-60px);\n}\n100% {\n        opacity: 1;\n        transform: scale(1) translatey(0);\n}\n}\n.vue-image-crop-upload {\n    position: fixed;\n    display: block;\n    box-sizing: border-box;\n    z-index: 10000;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.65);\n    -webkit-tap-highlight-color: transparent;\n    -moz-tap-highlight-color: transparent;\n}\n.vue-image-crop-upload .vicp-wrap {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    position: fixed;\n    display: block;\n    box-sizing: border-box;\n    z-index: 10000;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 600px;\n    height: 330px;\n    padding: 25px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-animation: vicp 0.12s ease-in;\n    animation: vicp 0.12s ease-in;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close {\n    position: absolute;\n    right: -30px;\n    top: -30px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4 {\n    position: relative;\n    display: block;\n    width: 30px;\n    height: 30px;\n    cursor: pointer;\n    transition: transform 0.18s;\n    transform: rotate(0);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4::after, .vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4::before {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    content: '';\n    position: absolute;\n    top: 12px;\n    left: 4px;\n    width: 20px;\n    height: 3px;\n    transform: rotate(45deg);\n    background-color: #fff;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4::after {\n    transform: rotate(-45deg);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4:hover {\n    transform: rotate(90deg);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area {\n    position: relative;\n    box-sizing: border-box;\n    padding: 35px;\n    height: 170px;\n    background-color: rgba(0, 0, 0, 0.03);\n    text-align: center;\n    border: 1px dashed rgba(0, 0, 0, 0.08);\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-icon1 {\n    display: block;\n    margin: 0 auto 6px;\n    width: 42px;\n    height: 42px;\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-icon1 .vicp-icon1-arrow {\n    display: block;\n    margin: 0 auto;\n    width: 0;\n    height: 0;\n    border-bottom: 14.7px solid rgba(0, 0, 0, 0.3);\n    border-left: 14.7px solid transparent;\n    border-right: 14.7px solid transparent;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-icon1 .vicp-icon1-body {\n    display: block;\n    width: 12.6px;\n    height: 14.7px;\n    margin: 0 auto;\n    background-color: rgba(0, 0, 0, 0.3);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-icon1 .vicp-icon1-bottom {\n    box-sizing: border-box;\n    display: block;\n    height: 12.6px;\n    border: 6px solid rgba(0, 0, 0, 0.3);\n    border-top: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-hint {\n    display: block;\n    padding: 15px;\n    font-size: 14px;\n    color: #666;\n    line-height: 30px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-no-supported-hint {\n    display: block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    padding: 30px;\n    width: 100%;\n    height: 60px;\n    line-height: 30px;\n    background-color: #eee;\n    text-align: center;\n    color: #666;\n    font-size: 14px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area:hover {\n    cursor: pointer;\n    border-color: rgba(0, 0, 0, 0.1);\n    background-color: rgba(0, 0, 0, 0.05);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop {\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left {\n    float: left;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container {\n    position: relative;\n    display: block;\n    width: 240px;\n    height: 180px;\n    background-color: #e5e5e0;\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container .vicp-img {\n    position: absolute;\n    display: block;\n    cursor: move;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container .vicp-img-shade {\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n    position: absolute;\n    background-color: rgba(241, 242, 243, 0.8);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container .vicp-img-shade.vicp-img-shade-1 {\n    top: 0;\n    left: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container .vicp-img-shade.vicp-img-shade-2 {\n    bottom: 0;\n    right: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate {\n    position: relative;\n    width: 240px;\n    height: 18px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate i {\n    display: block;\n    width: 18px;\n    height: 18px;\n    border-radius: 100%;\n    line-height: 18px;\n    text-align: center;\n    font-size: 12px;\n    font-weight: bold;\n    background-color: rgba(0, 0, 0, 0.08);\n    color: #fff;\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate i:hover {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    cursor: pointer;\n    background-color: rgba(0, 0, 0, 0.14);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate i:first-child {\n    float: left;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate i:last-child {\n    float: right;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range {\n    position: relative;\n    margin: 30px 0 10px 0;\n    width: 240px;\n    height: 18px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon5,\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6 {\n    position: absolute;\n    top: 0;\n    width: 18px;\n    height: 18px;\n    border-radius: 100%;\n    background-color: rgba(0, 0, 0, 0.08);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon5:hover,\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6:hover {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    cursor: pointer;\n    background-color: rgba(0, 0, 0, 0.14);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon5 {\n    left: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon5::before {\n    position: absolute;\n    content: '';\n    display: block;\n    left: 3px;\n    top: 8px;\n    width: 12px;\n    height: 2px;\n    background-color: #fff;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6 {\n    right: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6::before {\n    position: absolute;\n    content: '';\n    display: block;\n    left: 3px;\n    top: 8px;\n    width: 12px;\n    height: 2px;\n    background-color: #fff;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6::after {\n    position: absolute;\n    content: '';\n    display: block;\n    top: 3px;\n    left: 8px;\n    width: 2px;\n    height: 12px;\n    background-color: #fff;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range] {\n    display: block;\n    padding-top: 5px;\n    margin: 0 auto;\n    width: 180px;\n    height: 8px;\n    vertical-align: top;\n    background: transparent;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    cursor: pointer;\n    /* 滑块\n                     ---------------------------------------------------------------*/\n    /* 轨道\n                     ---------------------------------------------------------------*/\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus {\n    outline: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-webkit-slider-thumb {\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n    -webkit-appearance: none;\n    appearance: none;\n    margin-top: -3px;\n    width: 12px;\n    height: 12px;\n    background-color: #61c091;\n    border-radius: 100%;\n    border: none;\n    -webkit-transition: 0.2s;\n    transition: 0.2s;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-moz-range-thumb {\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n    -moz-appearance: none;\n    appearance: none;\n    width: 12px;\n    height: 12px;\n    background-color: #61c091;\n    border-radius: 100%;\n    border: none;\n    -moz-transition: 0.2s;\n    transition: 0.2s;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-ms-thumb {\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n    appearance: none;\n    width: 12px;\n    height: 12px;\n    background-color: #61c091;\n    border: none;\n    border-radius: 100%;\n    -ms-transition: 0.2s;\n    transition: 0.2s;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:active::-moz-range-thumb {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    width: 14px;\n    height: 14px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:active::-ms-thumb {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    width: 14px;\n    height: 14px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:active::-webkit-slider-thumb {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    margin-top: -4px;\n    width: 14px;\n    height: 14px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-webkit-slider-runnable-track {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    width: 100%;\n    height: 6px;\n    cursor: pointer;\n    border-radius: 2px;\n    border: none;\n    background-color: rgba(68, 170, 119, 0.3);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-moz-range-track {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    width: 100%;\n    height: 6px;\n    cursor: pointer;\n    border-radius: 2px;\n    border: none;\n    background-color: rgba(68, 170, 119, 0.3);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-ms-track {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    width: 100%;\n    cursor: pointer;\n    background: transparent;\n    border-color: transparent;\n    color: transparent;\n    height: 6px;\n    border-radius: 2px;\n    border: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-ms-fill-lower {\n    background-color: rgba(68, 170, 119, 0.3);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-ms-fill-upper {\n    background-color: rgba(68, 170, 119, 0.15);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus::-webkit-slider-runnable-track {\n    background-color: rgba(68, 170, 119, 0.5);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus::-moz-range-track {\n    background-color: rgba(68, 170, 119, 0.5);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus::-ms-fill-lower {\n    background-color: rgba(68, 170, 119, 0.45);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus::-ms-fill-upper {\n    background-color: rgba(68, 170, 119, 0.25);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right {\n    float: right;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview {\n    height: 150px;\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item {\n    position: relative;\n    padding: 5px;\n    width: 100px;\n    height: 100px;\n    float: left;\n    margin-right: 16px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item span {\n    position: absolute;\n    bottom: -30px;\n    width: 100%;\n    font-size: 14px;\n    color: #bbb;\n    display: block;\n    text-align: center;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item img {\n    position: absolute;\n    display: block;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    padding: 3px;\n    background-color: #fff;\n    border: 1px solid rgba(0, 0, 0, 0.15);\n    overflow: hidden;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item.vicp-preview-item-circle {\n    margin-right: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item.vicp-preview-item-circle img {\n    border-radius: 100%;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload {\n    position: relative;\n    box-sizing: border-box;\n    padding: 35px;\n    height: 170px;\n    background-color: rgba(0, 0, 0, 0.03);\n    text-align: center;\n    border: 1px dashed #ddd;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-loading {\n    display: block;\n    padding: 15px;\n    font-size: 16px;\n    color: #999;\n    line-height: 30px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-progress-wrap {\n    margin-top: 12px;\n    background-color: rgba(0, 0, 0, 0.08);\n    border-radius: 3px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-progress-wrap .vicp-progress {\n    position: relative;\n    display: block;\n    height: 5px;\n    border-radius: 3px;\n    background-color: #4a7;\n    box-shadow: 0 2px 6px 0 rgba(68, 170, 119, 0.3);\n    transition: width 0.15s linear;\n    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);\n    background-size: 40px 40px;\n    -webkit-animation: vicp_progress 0.5s linear infinite;\n    animation: vicp_progress 0.5s linear infinite;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-progress-wrap .vicp-progress::after {\n    content: '';\n    position: absolute;\n    display: block;\n    top: -3px;\n    right: -3px;\n    width: 9px;\n    height: 9px;\n    border: 1px solid rgba(245, 246, 247, 0.7);\n    box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);\n    border-radius: 100%;\n    background-color: #4a7;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-error,\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-success {\n    height: 100px;\n    line-height: 100px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-operate {\n    position: absolute;\n    right: 20px;\n    bottom: 20px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-operate a {\n    position: relative;\n    float: left;\n    display: block;\n    margin-left: 10px;\n    width: 100px;\n    height: 36px;\n    line-height: 36px;\n    text-align: center;\n    cursor: pointer;\n    font-size: 14px;\n    color: #4a7;\n    border-radius: 2px;\n    overflow: hidden;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-operate a:hover {\n    background-color: rgba(0, 0, 0, 0.03);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-error,\n.vue-image-crop-upload .vicp-wrap .vicp-success {\n    display: block;\n    font-size: 14px;\n    line-height: 24px;\n    height: 24px;\n    color: #d10;\n    text-align: center;\n    vertical-align: top;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-success {\n    color: #4a7;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon3 {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    top: 4px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon3::after {\n    position: absolute;\n    top: 3px;\n    left: 6px;\n    width: 6px;\n    height: 10px;\n    border-width: 0 2px 2px 0;\n    border-color: #4a7;\n    border-style: solid;\n    transform: rotate(45deg);\n    content: '';\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon2 {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    top: 4px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon2::after, .vue-image-crop-upload .vicp-wrap .vicp-icon2::before {\n    content: '';\n    position: absolute;\n    top: 9px;\n    left: 4px;\n    width: 13px;\n    height: 2px;\n    background-color: #d10;\n    transform: rotate(45deg);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon2::after {\n    transform: rotate(-45deg);\n}\n.e-ripple {\n    position: absolute;\n    border-radius: 100%;\n    background-color: rgba(0, 0, 0, 0.15);\n    background-clip: padding-box;\n    pointer-events: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    transform: scale(0);\n    opacity: 1;\n}\n.e-ripple.z-active {\n    opacity: 0;\n    transform: scale(2);\n    transition: opacity 1.2s ease-out, transform 0.6s ease-out;\n}\n\n", ""]);
+exports.push([module.i, "\n@-webkit-keyframes vicp_progress {\n0% {\n        background-position-y: 0;\n}\n100% {\n        background-position-y: 40px;\n}\n}\n@keyframes vicp_progress {\n0% {\n        background-position-y: 0;\n}\n100% {\n        background-position-y: 40px;\n}\n}\n@-webkit-keyframes vicp {\n0% {\n        opacity: 0;\n        transform: scale(0) translatey(-60px);\n}\n100% {\n        opacity: 1;\n        transform: scale(1) translatey(0);\n}\n}\n@keyframes vicp {\n0% {\n        opacity: 0;\n        transform: scale(0) translatey(-60px);\n}\n100% {\n        opacity: 1;\n        transform: scale(1) translatey(0);\n}\n}\n.vue-image-crop-upload {\n    position: fixed;\n    display: block;\n    box-sizing: border-box;\n    z-index: 10000;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.65);\n    -webkit-tap-highlight-color: transparent;\n    -moz-tap-highlight-color: transparent;\n}\n.vue-image-crop-upload .vicp-wrap {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    position: fixed;\n    display: block;\n    box-sizing: border-box;\n    z-index: 10000;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    width: 600px;\n    height: 400px;\n    padding: 25px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-animation: vicp 0.12s ease-in;\n    animation: vicp 0.12s ease-in;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close {\n    position: absolute;\n    right: -30px;\n    top: -30px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4 {\n    position: relative;\n    display: block;\n    width: 30px;\n    height: 30px;\n    cursor: pointer;\n    transition: transform 0.18s;\n    transform: rotate(0);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4::after, .vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4::before {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    content: '';\n    position: absolute;\n    top: 12px;\n    left: 4px;\n    width: 20px;\n    height: 3px;\n    transform: rotate(45deg);\n    background-color: #fff;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4::after {\n    transform: rotate(-45deg);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-close .vicp-icon4:hover {\n    transform: rotate(90deg);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area {\n    position: relative;\n    box-sizing: border-box;\n    padding: 35px;\n    height: 170px;\n    background-color: rgba(0, 0, 0, 0.03);\n    text-align: center;\n    border: 1px dashed rgba(0, 0, 0, 0.08);\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-icon1 {\n    display: block;\n    margin: 0 auto 6px;\n    width: 42px;\n    height: 42px;\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-icon1 .vicp-icon1-arrow {\n    display: block;\n    margin: 0 auto;\n    width: 0;\n    height: 0;\n    border-bottom: 14.7px solid rgba(0, 0, 0, 0.3);\n    border-left: 14.7px solid transparent;\n    border-right: 14.7px solid transparent;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-icon1 .vicp-icon1-body {\n    display: block;\n    width: 12.6px;\n    height: 14.7px;\n    margin: 0 auto;\n    background-color: rgba(0, 0, 0, 0.3);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-icon1 .vicp-icon1-bottom {\n    box-sizing: border-box;\n    display: block;\n    height: 12.6px;\n    border: 6px solid rgba(0, 0, 0, 0.3);\n    border-top: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-hint {\n    display: block;\n    padding: 15px;\n    font-size: 14px;\n    color: #666;\n    line-height: 30px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area .vicp-no-supported-hint {\n    display: block;\n    position: absolute;\n    top: 0;\n    left: 0;\n    padding: 30px;\n    width: 100%;\n    height: 60px;\n    line-height: 30px;\n    background-color: #eee;\n    text-align: center;\n    color: #666;\n    font-size: 14px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step1 .vicp-drop-area:hover {\n    cursor: pointer;\n    border-color: rgba(0, 0, 0, 0.1);\n    background-color: rgba(0, 0, 0, 0.05);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop {\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left {\n    float: left;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container {\n    position: relative;\n    display: block;\n    width: 350px;\n    height: 240px;\n    background-color: #e5e5e0;\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container .vicp-img {\n    position: absolute;\n    display: block;\n    cursor: move;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container .vicp-img-shade {\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n    position: absolute;\n    background-color: rgba(241, 242, 243, 0.8);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container .vicp-img-shade.vicp-img-shade-1 {\n    top: 0;\n    left: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-img-container .vicp-img-shade.vicp-img-shade-2 {\n    bottom: 0;\n    right: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate {\n    position: relative;\n    width: 350px;\n    height: 18px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate i {\n    display: block;\n    width: 18px;\n    height: 18px;\n    border-radius: 100%;\n    line-height: 18px;\n    text-align: center;\n    font-size: 12px;\n    font-weight: bold;\n    background-color: rgba(0, 0, 0, 0.08);\n    color: #fff;\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate i:hover {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    cursor: pointer;\n    background-color: rgba(0, 0, 0, 0.14);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate i:first-child {\n    float: left;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-rotate i:last-child {\n    float: right;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range {\n    position: relative;\n    margin: 30px 0 10px 0;\n    width: 350px;\n    height: 18px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon5,\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6 {\n    position: absolute;\n    top: 0;\n    width: 18px;\n    height: 18px;\n    border-radius: 100%;\n    background-color: rgba(0, 0, 0, 0.08);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon5:hover,\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6:hover {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    cursor: pointer;\n    background-color: rgba(0, 0, 0, 0.14);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon5 {\n    left: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon5::before {\n    position: absolute;\n    content: '';\n    display: block;\n    left: 3px;\n    top: 8px;\n    width: 12px;\n    height: 2px;\n    background-color: #fff;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6 {\n    right: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6::before {\n    position: absolute;\n    content: '';\n    display: block;\n    left: 3px;\n    top: 8px;\n    width: 12px;\n    height: 2px;\n    background-color: #fff;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range .vicp-icon6::after {\n    position: absolute;\n    content: '';\n    display: block;\n    top: 3px;\n    left: 8px;\n    width: 2px;\n    height: 12px;\n    background-color: #fff;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range] {\n    display: block;\n    padding-top: 5px;\n    margin: 0 auto;\n    width: 180px;\n    height: 8px;\n    vertical-align: top;\n    background: transparent;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    cursor: pointer;\n    /* 滑块\n                     ---------------------------------------------------------------*/\n    /* 轨道\n                     ---------------------------------------------------------------*/\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus {\n    outline: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-webkit-slider-thumb {\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n    -webkit-appearance: none;\n    appearance: none;\n    margin-top: -3px;\n    width: 12px;\n    height: 12px;\n    background-color: #61c091;\n    border-radius: 100%;\n    border: none;\n    -webkit-transition: 0.2s;\n    transition: 0.2s;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-moz-range-thumb {\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n    -moz-appearance: none;\n    appearance: none;\n    width: 12px;\n    height: 12px;\n    background-color: #61c091;\n    border-radius: 100%;\n    border: none;\n    -moz-transition: 0.2s;\n    transition: 0.2s;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-ms-thumb {\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n    appearance: none;\n    width: 12px;\n    height: 12px;\n    background-color: #61c091;\n    border: none;\n    border-radius: 100%;\n    -ms-transition: 0.2s;\n    transition: 0.2s;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:active::-moz-range-thumb {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    width: 14px;\n    height: 14px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:active::-ms-thumb {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    width: 14px;\n    height: 14px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:active::-webkit-slider-thumb {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);\n    margin-top: -4px;\n    width: 14px;\n    height: 14px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-webkit-slider-runnable-track {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    width: 100%;\n    height: 6px;\n    cursor: pointer;\n    border-radius: 2px;\n    border: none;\n    background-color: rgba(68, 170, 119, 0.3);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-moz-range-track {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    width: 100%;\n    height: 6px;\n    cursor: pointer;\n    border-radius: 2px;\n    border: none;\n    background-color: rgba(68, 170, 119, 0.3);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-ms-track {\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);\n    width: 100%;\n    cursor: pointer;\n    background: transparent;\n    border-color: transparent;\n    color: transparent;\n    height: 6px;\n    border-radius: 2px;\n    border: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-ms-fill-lower {\n    background-color: rgba(68, 170, 119, 0.3);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]::-ms-fill-upper {\n    background-color: rgba(68, 170, 119, 0.15);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus::-webkit-slider-runnable-track {\n    background-color: rgba(68, 170, 119, 0.5);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus::-moz-range-track {\n    background-color: rgba(68, 170, 119, 0.5);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus::-ms-fill-lower {\n    background-color: rgba(68, 170, 119, 0.45);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-left .vicp-range input[type=range]:focus::-ms-fill-upper {\n    background-color: rgba(68, 170, 119, 0.25);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right {\n    float: right;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview {\n    height: 150px;\n    overflow: hidden;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item {\n    position: relative;\n    padding: 5px;\n    width: 100px;\n    height: 100px;\n    float: left;\n    margin-right: 16px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item span {\n    position: absolute;\n    bottom: -30px;\n    width: 100%;\n    font-size: 14px;\n    color: #bbb;\n    display: block;\n    text-align: center;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item img {\n    position: absolute;\n    display: block;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    padding: 3px;\n    background-color: #fff;\n    border: 1px solid rgba(0, 0, 0, 0.15);\n    overflow: hidden;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item.vicp-preview-item-circle {\n    margin-right: 0;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step2 .vicp-crop .vicp-crop-right .vicp-preview .vicp-preview-item.vicp-preview-item-circle img {\n    border-radius: 100%;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload {\n    position: relative;\n    box-sizing: border-box;\n    padding: 35px;\n    height: 170px;\n    background-color: rgba(0, 0, 0, 0.03);\n    text-align: center;\n    border: 1px dashed #ddd;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-loading {\n    display: block;\n    padding: 15px;\n    font-size: 16px;\n    color: #999;\n    line-height: 30px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-progress-wrap {\n    margin-top: 12px;\n    background-color: rgba(0, 0, 0, 0.08);\n    border-radius: 3px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-progress-wrap .vicp-progress {\n    position: relative;\n    display: block;\n    height: 5px;\n    border-radius: 3px;\n    background-color: #4a7;\n    box-shadow: 0 2px 6px 0 rgba(68, 170, 119, 0.3);\n    transition: width 0.15s linear;\n    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);\n    background-size: 40px 40px;\n    -webkit-animation: vicp_progress 0.5s linear infinite;\n    animation: vicp_progress 0.5s linear infinite;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-progress-wrap .vicp-progress::after {\n    content: '';\n    position: absolute;\n    display: block;\n    top: -3px;\n    right: -3px;\n    width: 9px;\n    height: 9px;\n    border: 1px solid rgba(245, 246, 247, 0.7);\n    box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);\n    border-radius: 100%;\n    background-color: #4a7;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-error,\n.vue-image-crop-upload .vicp-wrap .vicp-step3 .vicp-upload .vicp-success {\n    height: 100px;\n    line-height: 100px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-operate {\n    position: absolute;\n    right: 20px;\n    bottom: 20px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-operate a {\n    position: relative;\n    float: left;\n    display: block;\n    margin-left: 10px;\n    width: 100px;\n    height: 36px;\n    line-height: 36px;\n    text-align: center;\n    cursor: pointer;\n    font-size: 14px;\n    color: #4a7;\n    border-radius: 2px;\n    overflow: hidden;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-operate a:hover {\n    background-color: rgba(0, 0, 0, 0.03);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-error,\n.vue-image-crop-upload .vicp-wrap .vicp-success {\n    display: block;\n    font-size: 14px;\n    line-height: 24px;\n    height: 24px;\n    color: #d10;\n    text-align: center;\n    vertical-align: top;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-success {\n    color: #4a7;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon3 {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    top: 4px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon3::after {\n    position: absolute;\n    top: 3px;\n    left: 6px;\n    width: 6px;\n    height: 10px;\n    border-width: 0 2px 2px 0;\n    border-color: #4a7;\n    border-style: solid;\n    transform: rotate(45deg);\n    content: '';\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon2 {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    top: 4px;\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon2::after, .vue-image-crop-upload .vicp-wrap .vicp-icon2::before {\n    content: '';\n    position: absolute;\n    top: 9px;\n    left: 4px;\n    width: 13px;\n    height: 2px;\n    background-color: #d10;\n    transform: rotate(45deg);\n}\n.vue-image-crop-upload .vicp-wrap .vicp-icon2::after {\n    transform: rotate(-45deg);\n}\n.e-ripple {\n    position: absolute;\n    border-radius: 100%;\n    background-color: rgba(0, 0, 0, 0.15);\n    background-clip: padding-box;\n    pointer-events: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    transform: scale(0);\n    opacity: 1;\n}\n.e-ripple.z-active {\n    opacity: 0;\n    transform: scale(2);\n    transition: opacity 1.2s ease-out, transform 0.6s ease-out;\n}\n\n", ""]);
 
 // exports
 
@@ -13187,6 +13306,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.profile-user-img {\n    width: 200px;\n    margin: 15px auto;\n}\n.img-circle {\n    border-radius: 50%;\n}\n.vue-image-crop-upload .vicp-wrap {\n    width: 350px;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.cover-user-img {\n    margin: 15px auto;\n}\n.img-circle {\n    border-radius: 50%;\n}\n.vue-image-crop-upload .vicp-wrap {\n    width: 350px;\n}\n\n", ""]);
 
 // exports
 
@@ -64566,6 +64704,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./editCover.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -72627,7 +72795,7 @@ var render = function() {
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-lg btn-primary btn-block",
+                              staticClass: "btn btn-outline-primary btn-block",
                               attrs: { type: "submit" }
                             },
                             [_vm._v("start")]
@@ -72638,7 +72806,7 @@ var render = function() {
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-lg btn-danger btn-block",
+                              staticClass: "btn btn-outline-danger btn-block",
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
@@ -72698,14 +72866,14 @@ var render = function() {
         _c("div", { staticClass: "card-img text-center" }, [
           _c("img", {
             staticClass: "profile-user-img img-thumbnail img-circle",
-            attrs: { src: _vm.user.avatar, alt: "User profile picture" }
+            attrs: { src: _vm.img, alt: "User profile picture" }
           })
         ]),
         _vm._v(" "),
         _c(
-          "a",
+          "button",
           {
-            staticClass: "btn btn-primary btn-block",
+            staticClass: "btn btn-outline-primary btn-block",
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -72723,10 +72891,91 @@ var render = function() {
             height: 200,
             url: _vm.urlApi,
             params: _vm.params,
-            noCircle: true,
+            noCircle: "",
+            noSquare: "",
             "lang-type": "fr",
-            method: "POST",
-            noSquare: true
+            method: "POST"
+          },
+          on: {
+            "crop-upload-success": _vm.cropUploadSuccess,
+            "crop-upload-fail": _vm.cropUploadFail
+          },
+          model: {
+            value: _vm.show,
+            callback: function($$v) {
+              _vm.show = $$v
+            },
+            expression: "show"
+          }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/editCover.vue?vue&type=template&id=116f1d14&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/user/editCover.vue?vue&type=template&id=116f1d14& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card my-3" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n        Changer le cover\n    ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card-body" },
+      [
+        _c("div", { staticClass: "card-img text-center" }, [
+          _c("img", {
+            staticClass: "cover-user-img img-thumbnail",
+            attrs: { src: _vm.img, alt: "User profile picture" }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-primary btn-block",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.open($event)
+              }
+            }
+          },
+          [_vm._v("\n            Uploader image profile\n        ")]
+        ),
+        _vm._v(" "),
+        _c("upload", {
+          attrs: {
+            field: "cover",
+            width: 1000,
+            height: 300,
+            url: _vm.urlApi,
+            params: _vm.params,
+            noCircle: "",
+            noSquare: "",
+            "lang-type": "fr",
+            method: "POST"
           },
           on: {
             "crop-upload-success": _vm.cropUploadSuccess,
@@ -73260,7 +73509,7 @@ var render = function() {
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-lg btn-primary btn-block",
+                              staticClass: "btn btn-outline-primary btn-block",
                               attrs: { type: "submit" }
                             },
                             [_vm._v("start")]
@@ -73271,7 +73520,7 @@ var render = function() {
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-lg btn-danger btn-block",
+                              staticClass: "btn btn-outline-danger btn-block",
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
@@ -88564,6 +88813,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_user_editProfile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/user/editProfile */ "./resources/js/components/user/editProfile.vue");
 /* harmony import */ var _components_user_editAccount__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/user/editAccount */ "./resources/js/components/user/editAccount.vue");
 /* harmony import */ var _components_user_editAvatar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/user/editAvatar */ "./resources/js/components/user/editAvatar.vue");
+/* harmony import */ var _components_user_editCover__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/user/editCover */ "./resources/js/components/user/editCover.vue");
  //layout
 
 var layout = __webpack_require__("./resources/js/components/layouts sync recursive \\.vue$/");
@@ -88583,11 +88833,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-personal-access-t
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   friends: _components_user_friends__WEBPACK_IMPORTED_MODULE_1__["default"],
   EditProfile: _components_user_editProfile__WEBPACK_IMPORTED_MODULE_2__["default"],
   editAccount: _components_user_editAccount__WEBPACK_IMPORTED_MODULE_3__["default"],
-  editAvatar: _components_user_editAvatar__WEBPACK_IMPORTED_MODULE_4__["default"]
+  editAvatar: _components_user_editAvatar__WEBPACK_IMPORTED_MODULE_4__["default"],
+  editCover: _components_user_editCover__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
 
 /***/ }),
@@ -89381,6 +89633,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editAvatar_vue_vue_type_template_id_873ec468___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editAvatar_vue_vue_type_template_id_873ec468___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/user/editCover.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/user/editCover.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _editCover_vue_vue_type_template_id_116f1d14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editCover.vue?vue&type=template&id=116f1d14& */ "./resources/js/components/user/editCover.vue?vue&type=template&id=116f1d14&");
+/* harmony import */ var _editCover_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editCover.vue?vue&type=script&lang=js& */ "./resources/js/components/user/editCover.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _editCover_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editCover.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _editCover_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _editCover_vue_vue_type_template_id_116f1d14___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _editCover_vue_vue_type_template_id_116f1d14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/user/editCover.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/user/editCover.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/user/editCover.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./editCover.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/editCover.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./editCover.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/editCover.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/user/editCover.vue?vue&type=template&id=116f1d14&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/user/editCover.vue?vue&type=template&id=116f1d14& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_template_id_116f1d14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./editCover.vue?vue&type=template&id=116f1d14& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/editCover.vue?vue&type=template&id=116f1d14&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_template_id_116f1d14___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editCover_vue_vue_type_template_id_116f1d14___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

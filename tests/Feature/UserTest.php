@@ -167,11 +167,14 @@ class UserTest extends TestCase
     public function testFile()
     {
         $user = $this->SimpleUser();
+        $user2 = $this->SimpleUser();
         $upload = $this->actingAs($user,'api')->json('post', 'api/avatar', [
             'avatar' => $file = UploadedFile::fake()->image('random.jpg', 300, 300),
    //         'img' => UploadedFile::fake()->image("red.jpg", 200, 200),
             "red" => 5,
         ]);
+
+        dd($user->profile->avatar, $user->avatar, $user2->avatar);
 
 
         $upload->assertSuccessful();
