@@ -27,6 +27,7 @@ class UsersTableSeeder extends Seeder
 
         $user->assignRole(Role::findById(3));
         $user->profile()->create();
+        $user->config()->create();
 
         $user = factory(User::class)
             ->create([
@@ -40,17 +41,20 @@ class UsersTableSeeder extends Seeder
             ]);
         $user->assignRole(Role::findById(2));
         $user->profile()->create();
+        $user->config()->create();
 
         factory(User::class, 2)->create()
             ->each(function ($u) {
                 $u->assignRole(Role::findById(4));
                 $u->profile()->create();
+                $u->config()->create();
             });
 
         factory(User::class, 20)->create()
             ->each(function ($u) {
                 $u->assignRole(Role::findById(1));
                 $u->profile()->create();
+                $u->config()->create();
             });
 
     }

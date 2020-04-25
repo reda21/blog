@@ -112,19 +112,80 @@
                         </div>
 
                     </li>
-                    <li class="nav-item dropdown nav-icon">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" href="#"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bell"></i>
-                            <span class="nav-notif">25</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-label="navbarDropdownMenuLink">
-                            <a href="#" class="dropdown-item">alpha</a>
-                            <a href="#" class="dropdown-item">beta</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">omega</a>
-                        </div>
-                    </li>
+                    <notification-navbar>
+                        <li class="nav-item dropdown nav-icon">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" href="#"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="nav-notif">25</span>
+                            </a>
+                            <ul class="notification dropdown-menu dropdown-menu-right" aria-label="navbarDropdownMenuLink">
+                                <li class="dropdown-item dropdown-header">
+                                    15 Notifications
+                                </li>
+                                <li class="dropdown-item dropdown-body">
+                                    <ul>
+                                        <li>
+                                            <div class="media">
+                                                <img class="rounded-circle"
+                                                     src="https://colorlib.com//polygon/admindek/files/assets/images/avatar-4.jpg"
+                                                     alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="notification-user">John Doe</h5>
+                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                        elit.</p>
+                                                    <span class="notification-time pull-right">30 minutes ago</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media">
+                                                <img class="rounded-circle"
+                                                     src="https://colorlib.com//polygon/admindek/files/assets/images/avatar-4.jpg"
+                                                     alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="notification-user">John Doe</h5>
+                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                        elit.</p>
+                                                    <span class="notification-time pull-right">30 minutes ago</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media">
+                                                <img class="rounded-circle"
+                                                     src="https://colorlib.com//polygon/admindek/files/assets/images/avatar-4.jpg"
+                                                     alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="notification-user">John Doe</h5>
+                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                        elit.</p>
+                                                    <span class="notification-time pull-right">30 minutes ago</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media">
+                                                <img class="rounded-circle"
+                                                     src="https://colorlib.com//polygon/admindek/files/assets/images/avatar-4.jpg"
+                                                     alt="Generic placeholder image">
+                                                <div class="media-body">
+                                                    <h5 class="notification-user">John Doe</h5>
+                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                        elit.</p>
+                                                    <span class="notification-time pull-right">30 minutes ago</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item dropdown-footer">
+                                    15 Notifications
+                                </li>
+
+                            </ul>
+                        </li>
+                    </notification-navbar>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle user-action" href="#" id="navbarDropdownMenuLink"
                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

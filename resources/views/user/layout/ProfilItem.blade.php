@@ -7,41 +7,46 @@
             <a href="{{$user->present()->urlProfile}}">{{$user->username}}</a>
             <span>({{$user->roleName}})</span>
         </h5>
-        <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="description-block text-center">
-                            <h5 class="description-header">
-                                <a href="http://webmx2018.me/user/redmax/followers">{{$user->followers()->count()}}</a>
-                            </h5>
-                            <span class="description-text">Abonnements</span>
+        <friends :friends="{{\App\Services\Helper::ProfileStatus($user)}}"
+                 :user="{{json_encode($user->present()->cordinate)}}">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="description-block text-center">
+                                <h5 class="description-header">
+                                    <a href="http://webmx2018.me/user/redmax/followers">{{$user->followers()->count()}}</a>
+                                </h5>
+                                <span class="description-text">Abonnements</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="description-block text-center">
+                                <h5 class="description-header">
+                                    <a href="http://webmx2018.me/user/redmax/following">{{$user->following()->count()}}</a>
+                                </h5>
+                                <span class="description-text">Abonnés</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="description-block text-center">
-                            <h5 class="description-header">
-                                <a href="http://webmx2018.me/user/redmax/following">{{$user->following()->count()}}</a>
-                            </h5>
-                            <span class="description-text">Abonnés</span>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            @if($user->id != auth()->id())
+                                <button type="button" class="btn btn-outline-secondary btn-block">
+                                    <i class="fa fa-user"></i> Suivre
+                                </button>
+                            @endif
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-outline-primary btn-block">
+                                <i class="fa fa-envelope"></i> Message
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-6">
-                        <button type="button" class="btn btn-outline-secondary btn-block">
-                            <i class="fa fa-user"></i> Suivre
-                        </button>
-                    </div>
-                    <div class="col-6">
-                        <button type="button" class="btn btn-outline-primary btn-block">
-                            <i class="fa fa-envelope"></i> Message
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </friends>
     </div>
 </div>

@@ -47,6 +47,11 @@ Route::group(['prefix' => 'acount', 'as' => 'user'], function () {
     Route::post("notification", ["as" => ".updateConfigNotification", 'uses' => 'UserController@updateConfigNotification']);
 });
 
+//5 notification controller
+Route::get('notifications', ['as' => 'notifications', 'uses' => 'NotificationsController@notifications']);
+Route::get('notifications/{id}', ['as' => 'notifications.read', 'uses' => 'NotificationsController@readNotifications']);
+
+
 Route::get("privacy", ["use" => "HomeController@privacy"]);
 Route::get("service", ["use" => "HomeController@service"]);
 

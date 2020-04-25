@@ -30,3 +30,9 @@ Route::group(['prefix' => 'user', 'as' => 'user'], function () {
     Route::post('/{id}/{action}', ['as' => '.follow', 'uses' => 'Api\UserController@follow'])
         ->where('action', 'follow|unfollow')->middleware(['auth:api']);
 });
+
+//notification
+Route::get('notifications', ['as' => 'user.notifications', 'uses' => 'Api\NotificationsController@GetNotifications'])->middleware(['auth:api']);
+Route::delete('notifications/{id}', ['as' => 'user.notifications.delete', 'uses' => 'Api\NotificationsController@DeleteNotification'])->middleware(['auth:api']);
+Route::delete('notifications', ['as' => 'user.notifications.deleteAll', 'uses' => 'Api\NotificationsController@DeleteAllNotification'])->middleware(['auth:api']);
+

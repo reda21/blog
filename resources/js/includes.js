@@ -65,6 +65,8 @@ import VueCompositionApi from '@vue/composition-api';
 Vue.use(VueCompositionApi);
 
 Vue.use(VueRessource);
+Vue.http.options.root = ApiUrl;
+Vue.http.options.emulateJSON = true;
 Vue.http.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
 Vue.http.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

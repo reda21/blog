@@ -6,6 +6,10 @@ if (navigator.userAgent.indexOf('PhantomJS') > -1) {
 }
 
 export const mutations = {
+    synchoTodo(state, todo){
+
+    },
+    /*
     addTodo (state, todo) {
         state.todos.push(todo)
     },
@@ -23,4 +27,7 @@ export const mutations = {
             done
         })
     }
+
+    */
+
 }

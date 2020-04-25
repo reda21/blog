@@ -9,7 +9,7 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "test": "cross-env NODE_ENV=test jest",
+        "test": "cross-env NODE_ENV=test jest --watch",
         "test-js": "mocha-webpack --webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require resources/js/test/setup.js resources/js/test/**/*.spec.js"
     },
     "jest": {
@@ -23,6 +23,7 @@
         },
         "transform": {
             "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+            "^.+\\.ts$": "<rootDir>/node_modules/babel-jest",
             ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
             ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
         },
@@ -32,13 +33,13 @@
     },
     "devDependencies": {
         "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-        "@vue/test-utils": "^1.0.0-beta.31",
+        "@vue/test-utils": "^1.0.0-beta.33",
         "axios": "^0.19",
         "axios-mock-adapter": "^1.17.0",
         "babel-jest": "^25.1.0",
         "bootstrap": "^4.0.0",
         "cross-env": "^5.2.1",
-        "jest": "^25.1.0",
+        "jest": "^25.4.0",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.15",
@@ -46,6 +47,7 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
+        "ts-jest": "^25.4.0",
         "vue": "^2.5.17",
         "vue-jest": "^3.0.5",
         "vue-template-compiler": "^2.6.10"
@@ -76,12 +78,14 @@
         "jquery-ui": "^1.12.1",
         "jsdom": "^16.2.0",
         "jsdom-global": "^3.0.2",
+        "jsonwebtoken": "^8.5.1",
         "mocha": "^7.0.1",
         "mocha-webpack": "^1.1.0",
         "mochapack": "^1.1.13",
         "moment": "^2.24.0",
         "pace-progress": "^1.0.2",
         "pc-bootstrap4-datetimepicker": "^4.17.50",
+        "puppeteer": "^3.0.0",
         "sinon": "^9.0.0",
         "toastr": "^2.1.4",
         "uglifyjs-webpack-plugin": "^2.2.0",
@@ -96,6 +100,7 @@
         "vue-simplemde": "^1.0.4",
         "vue-socket.io": "^3.0.7",
         "vuex": "^3.1.2",
-        "webpack-bundle-analyzer": "^3.6.0"
+        "webpack-bundle-analyzer": "^3.6.0",
+        "ws": "^7.2.3"
     }
 }

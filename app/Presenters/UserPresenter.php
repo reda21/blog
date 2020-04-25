@@ -20,6 +20,16 @@ class UserPresenter extends Presenter {
         return Route("user", [$this->username]);
     }
 
+    public function cordinate()
+    {
+        return [
+            "id" => $this->id,
+            "usename" => $this->username,
+            "url" => $this->urlProfile(),
+            "activate" => $this->id != auth()->id()
+        ];
+    }
+
 
 
 }

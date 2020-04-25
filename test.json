@@ -1,8 +1,22 @@
 {
-    "message": "The given data was invalid.",
-    "errors": {
-        "avatar": [
-            "La taille de avatar doit \u00eatre 500 de large et 500 de haut"
-        ]
-    }
+    "data": [
+        {
+            "id": "47a1831c-aac9-46f0-ae76-5cfc135fac74",
+            "logo": "http:\/\/blog.me\/img\/profile_images\/default.jpg",
+            "url": "http:\/\/blog.me\/notifications\/47a1831c-aac9-46f0-ae76-5cfc135fac74",
+            "label": "<strong>mhagenes<\/strong> vien a commancer vous suivre",
+            "label_strip": "mhagenes vien a commancer vous suivre",
+            "read": false,
+            "create_at": 1587421752
+        },
+        {
+            "id": "7aec5d56-2ccf-40d3-9a75-2e32249003ef",
+            "logo": "http:\/\/blog.me\/img\/profile_images\/default.jpg",
+            "url": "http:\/\/blog.me\/notifications\/7aec5d56-2ccf-40d3-9a75-2e32249003ef",
+            "label": "<strong>santino26<\/strong> vien a commancer vous suivre",
+            "label_strip": "santino26 vien a commancer vous suivre",
+            "read": false,
+            "create_at": 1587421752
+        }
+    ]
 }

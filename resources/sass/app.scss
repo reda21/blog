@@ -46,3 +46,8 @@
 //pages
 @import "pages";
 
+::selection {
+    color: black;
+    background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+

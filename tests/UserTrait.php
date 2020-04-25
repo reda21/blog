@@ -31,6 +31,7 @@ trait UserTrait
                 ->create();
             $user->assignRole(Role::whereSlug($role)->first());
             $user->profile()->create();
+            $user->config()->create();
             return $user;
         }
 
@@ -38,6 +39,8 @@ trait UserTrait
             ->create()
             ->each(function ($u) use ($role) {
                 $u->assignRole(Role::whereSlug($role)->first());
+                $u->profile()->create();
+                $u->config()->create();
             });
     }
 

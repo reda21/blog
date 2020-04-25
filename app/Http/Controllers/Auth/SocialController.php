@@ -95,6 +95,7 @@ class SocialController extends Controller
                 $user->assignRole($role);
 
                 $user->profile()->save($profile);
+                $user->config()->create();
                 $user->save();
 
                 if ($socialData->provider == 'github') {

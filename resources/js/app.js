@@ -3,9 +3,13 @@
  */
 import Vue from "vue"
 
+import VueSocketIO from "vue-socket.io"
+import SocketIO from "socket.io-client"
+
 Vue.config.debug = true;
 Vue.config.devtools = true;
 Vue.config.performance = true;
+
 
 require("./bootstrap")
 /**
@@ -21,62 +25,83 @@ import store from "./store"
 
 import components from "./components";
 
+import './filter';
+
 global.store = store;
+
+Vue.use(new VueSocketIO({
+    debug: true,
+    connection: 'http://localhost:1455',
+    vuex: {
+        store,
+        actionPrefix: 'action_',
+        mutationPrefix: 'mutation_',
+        options: {
+            useConnectionNamespace: true
+        }
+    },
+    // options: { path: "/my-app/" } //Optional options
+}));
+
+import {useSwitch} from "./composition/useSwitch"
+import {useProfile} from "./composition/useProfile"
+import {mapActions, mapGetters} from "vuex"
+
+console.log({useSwitch});
 const app = new Vue({
     el: '#app',
+    components,
+    store,
+    setup() {
+        const [Switch] = useSwitch();
+
+        const [profile] = useProfile();
+
+        return {
+            Switch, profile
+        }
+    },
     data() {
         return {
-            Switch: false
+            alpha: 5
         }
     },
-    store,
     computed: {
-        darkSwitch: {
-            // getter
-            get: function () {
-                let value = false;
-                if (localStorage.getItem("darkSwitch") == "true") {
-                    value = true
-                }
-
-                if (value) {
-                    this.changeAttribute(true);
-                }
-                return value;
-            },
-            // setter
-            set: function (nVar, oVar) {
-                console.log({nVar, oVar, dif: nVar != oVar});
-                if (nVar != oVar) {
-                    localStorage.setItem("darkSwitch", nVar)
-                    this.changeAttribute(nVar);
-                }
-            }
-        }
+        ...mapGetters(["usersOnline"])
     },
-    components,
     methods: {
-        changeAttribute(val) {
-            if (val) {
-                document.body.setAttribute("data-theme", "dark");
-            } else {
-                document.body.removeAttribute("data-theme");
-            }
+        ...mapActions(["AddUserOnline", "DeleteUserOnline", "SetUserProfile"])
+    },
+    sockets: {
+        connect: function () {
+            console.log('socket connected');
+            this.SetUserProfile(this.profile);
+            this.$socket.emit("identify", this.profile);
         },
-        changeSwitch() {
-            if (this.Switch) {
-                this.Switch = false;
-                this.darkSwitch = false;
-            } else {
-                this.Switch = true;
-                this.darkSwitch = true;
-            }
+        show_all_user_online(data) {
+            console.log({show_all_user_online: data});
+            this.AddUserOnline(data);
+        },
+        add_user_online(data) {
+            console.log({add_user_online: data});
+            this.AddUserOnline(data);
+        },
+        delete_user_online(data) {
+            console.log({delete_user_online: data});
+            this.DeleteUserOnline(data);
+        },
+        result(data) {
+            console.log({result: data});
+        },
+        customEmit: function (data) {
+            console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
         }
     },
     mounted() {
         if (window.messageSuccess) window.alertSuccess(window.messageSuccess);
         if (window.messageErrors) window.alertError(window.messageErrors);
     }
+
 
 });
 

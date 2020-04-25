@@ -1,0 +1,11 @@
+{
+    "App\\Notifications\\NotificationFollowersUser": {
+        "text": "**%s** vien a commancer vous suivre",
+        "args": [
+            {
+                "model": "model",
+                "var": "username"
+            }
+        ]
+    }
+}

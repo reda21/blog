@@ -53,6 +53,9 @@ return [
         'null' => [
             'driver' => 'null',
         ],
+        'socket' => [
+            'driver' => 'alpha'
+        ]
 
     ],
 

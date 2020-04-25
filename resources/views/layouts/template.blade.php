@@ -20,6 +20,8 @@
             @if (\Session::has('errors'))
             window.messageErrors = "{{Session::get('errors')}}";
         @endif
+
+            window.jwt = "{{\App\Services\Helper::getUser()}}"
     </script>
     <script src="{{mix("/js/moment.min.js")}}" defer></script>
     <script src="{{mix("/js/fr.js")}}" defer></script>
@@ -132,7 +134,7 @@
             <div class="row">
                 <div class="col text-center">
                     <div class="footer-btm" style="color: white;">
-                        <span id="span">©2014. Theme by Design_mylife</span>
+                        <span id="span">©2014. Theme by Design_mylife <i style="color: red">[@{{ usersOnline }}]</i></span>
                     </div>
                 </div>
             </div>

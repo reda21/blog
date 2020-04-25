@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Websocket\SocketBroadcaster;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        Broadcast::extend('alpha', function ($broadcasting, $config){
+            return new SocketBroadcaster();
+        });
     }
 }

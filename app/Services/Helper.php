@@ -5,7 +5,9 @@ namespace App\Services;
 
 
 use App\Models\User;
+use Firebase\JWT\JWT;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Request;
 use URL;
 
 class Helper
@@ -114,6 +116,19 @@ class Helper
         return response()->json($json);
     }
 
+    public static function responseData($data)
+    {
+        $json = [
+            'success' => true,
+            'data' => $data,
+        ];
+        if ($data)
+            $json["data"] = $data;
+        return response()->json($json);
+
+    }
+
+
     /**
      * @param $message
      * @param int $status
@@ -131,6 +146,7 @@ class Helper
         return response()->json($json, $status);
     }
 
+
     /**
      * @param string $errors
      * @return JsonResponse
@@ -144,7 +160,7 @@ class Helper
         return response()->json($json, 422);
     }
 
-    public static function getimagesize(string $file):array
+    public static function getimagesize(string $file): array
     {
         //renumber
         $my_image = array_values(getimagesize($file));
@@ -154,4 +170,40 @@ class Helper
 
         return compact('width', "height", "type", "attr");
     }
+
+    public static function ProfileStatus(User $user): string
+    {
+        $me = auth()->user();
+        $status = $me->isFollowing($user) ? 2 : ($user->config->private_compte ? 3 : 1);
+        $array = [
+            "status" => $status,
+            "return" => $user->isFollowing($me)? 1 : 0,
+            "follows" => $user->followers()->count(),
+            "following" => $user->following()->count()
+        ];
+        return json_encode($array);
+    }
+
+    public static function getUser()
+    {
+        $token = [
+            "user_id" => auth()->check() ? auth()->id() : 0,
+            'user_username' => auth()->check() ? auth()->user()->username : "Guest." . csrf_token(),
+            "user_role" => auth()->check() ? auth()->user()->roles->first()->name : null,
+            "user_role_description" => auth()->check() ? auth()->user()->roles->first()->name : "",
+            "user_first_name" => auth()->check() ? auth()->user()->first_name : "",
+            "user_last_name" => auth()->check() ? auth()->user()->last_name : "",
+            "user_url" => auth()->check() ? route("user", ["id" => auth()->user()->username]) : "",
+            "avatar" => auth()->check() ? asset(auth()->user()->avatar) : "",
+            "ip" => md5(Request::ip()),
+            "agent" => md5(Request::server('HTTP_USER_AGENT')),
+            "online_show" => true,
+            "exp" => time() + (60 * 60 * 24),
+            "token" => csrf_token()
+        ];
+
+        return JWT::encode($token, "mon_super_cle");
+    }
+
+
 }

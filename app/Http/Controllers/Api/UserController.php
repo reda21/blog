@@ -107,14 +107,53 @@ class UserController extends Controller
      * @param string $action follow or unfollow
      * @param Request $request
      */
-    public function follow($id, $action, Request $request): void
+    public function follow($id, $action, Request $request)
     {
         $me = $request->user();
         $user = $this->userRepository->findBy("username", $id);
+
+        if(! $user){
+            return Helper::responseError("non disponible", 404);
+        }
+
+        if($user->config->private_compte){
+            if ($action == "follow") {
+                $me->followRequest($user);
+                return  Helper::responseData( [
+                    "status" => 3,
+                    "return" => $user->isFollowing($me)? 1 : 0,
+                    "follows" => $user->followers()->count(),
+                    "following" => $user->following()->count()
+                ]);
+            } else {
+                $me->unfollow($user);
+                return  Helper::responseData( [
+                    "status" => 1,
+                    "return" => $user->isFollowing($me)? 1 : 0,
+                    "follows" => $user->followers()->count(),
+                    "following" => $user->following()->count()
+                ]);
+            }
+            return  Helper::responseSuccess("this message");
+
+        }
+
         if ($action == "follow") {
             $me->follow($user);
+            return  Helper::responseData( [
+                "status" => 2,
+                "return" => $user->isFollowing($me)? 1 : 0,
+                "follows" => $user->followers()->count(),
+                "following" => $user->following()->count()
+            ]);
         } else {
             $me->unfollow($user);
+            return  Helper::responseData( [
+                "status" => 1,
+                "return" => $user->isFollowing($me)? 1 : 0,
+                "follows" => $user->followers()->count(),
+                "following" => $user->following()->count()
+            ]);
         }
     }
 
@@ -193,9 +232,9 @@ class UserController extends Controller
         $file = $request->avatar->getPathName();
         $image = Image::make($file);
         $imageName = sprintf("img/profile_images/%s.avatar.jpg", $me->username);
-        $save = $image->save(public_path()."/".$imageName);
+        $save = $image->save(public_path() . "/" . $imageName);
 
-        if($save) {
+        if ($save) {
             $me->profile->update([
                 'avatar' => $imageName,
                 'avatar_status' => ImageDB::AVATAR_STATUS_LOCALE,
@@ -216,9 +255,9 @@ class UserController extends Controller
         $file = $request->cover->getPathName();
         $image = Image::make($file);
         $imageName = sprintf("img/cover_images/%s.cover.jpg", $me->username);
-        $save = $image->save(public_path()."/".$imageName);
+        $save = $image->save(public_path() . "/" . $imageName);
 
-        if($save) {
+        if ($save) {
             $me->profile->update([
                 'cover' => $imageName,
             ]);

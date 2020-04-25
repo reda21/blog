@@ -31,6 +31,8 @@ import EditProfile from "./components/user/editProfile"
 import editAccount from "./components/user/editAccount"
 import editAvatar from "./components/user/editAvatar"
 import editCover from "./components/user/editCover"
+import NotificationNavbar from "./components/Notification/NotificationNavbar"
+import NotificationList from "./components/Notification/NotificationList"
 
 export default {
     friends: friend,
@@ -38,5 +40,7 @@ export default {
     editAccount,
     editAvatar,
     editCover,
+    NotificationNavbar,
+    NotificationList
 }
 

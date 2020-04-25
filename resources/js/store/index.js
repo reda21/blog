@@ -1,18 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { mutations, STORAGE_KEY } from './mutations'
+import getters from "./getters"
 import actions from './actions'
 import plugins from './plugins'
+
+//modules
+import notifications from "./modules/notifications"
+import users from "./modules/users"
 
 Vue.use(Vuex)
 
 import socket from "vue-socket.io"
 
 export default new Vuex.Store({
-    state: {
-        todos:  []
+    modules:{
+        notifications, users
     },
     actions,
-    mutations,
+    getters,
  //   plugins
 })

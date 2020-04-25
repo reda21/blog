@@ -79,6 +79,8 @@ class RegisterController extends Controller
         ];
         $user =  User::create($array);
         $user->assignRole(Role::findById(1));
+        $user->profile()->create();
+        $user->config()->create();
         return $user;
     }
 }

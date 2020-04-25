@@ -19,10 +19,8 @@
                             <a href="{{$user->present()->urlProfile}}">{{$user->username}}</a>
                             <span>({{$user->roleName}})</span>
                         </h5>
-                        <friends url="{{$user->present()->urlProfile}}" :follows-nbr="{{$user->followers()->count()}}"
-                                 :following-nbr="{{$user->following()->count()}}"
-                                 :user="{id:{{$user->id}},username:'{{$user->username}}'}"
-                                 :follow="{{Auth::user()->isFollowing($user)? 1 : 0}}">
+                        <friends :friends="{{\App\Services\Helper::ProfileStatus($user)}}"
+                                 :user="{{json_encode($user->present()->cordinate)}}" unit>
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <div class="row">
@@ -48,9 +46,11 @@
                                     <div class="col-md-6">
                                         <div class="row">
                                             <div class="col-6">
-                                                <button type="button" class="btn btn-outline-secondary btn-block">
-                                                    <i class="fa fa-user"></i> Suivre
-                                                </button>
+                                                @if($user->id != auth()->id())
+                                                    <button type="button" class="btn btn-outline-secondary btn-block">
+                                                        <i class="fa fa-user"></i> Suivre
+                                                    </button>
+                                                @endif
                                             </div>
                                             <div class="col-6">
                                                 <button type="button" class="btn btn-outline-primary btn-block">

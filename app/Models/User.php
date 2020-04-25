@@ -141,9 +141,19 @@ class User extends Authenticatable implements ImplentationUser
         return $this->hasMany(Social::class);
     }
 
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function config()
+    {
+        return $this->hasOne(ConfigUser::class);
     }
 
     function getNameAttribute()

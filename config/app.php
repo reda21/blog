@@ -30,6 +30,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | web socket url
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+  */
+    "socketUrl" => env("SOCKET_URL", "http://localhost:1455"),
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------
     |
@@ -161,6 +172,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -174,6 +186,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Services\Websocket\SocketProvider::class,
 
     ],
 
@@ -225,6 +238,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Socket' => \App\Services\Websocket\SocketFactory::class,
 
 
     ],
