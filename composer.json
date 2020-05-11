@@ -28,10 +28,12 @@
         "laravelcollective/html": "^6.0",
         "league/commonmark": "^1.3",
         "mtrajano/laravel-swagger": "^0.6.3",
+        "musonza/chat": "^4.4",
         "predis/predis": "^1.1",
         "rennokki/befriended": "^3.0",
         "socialiteproviders/twitter": "^3.0",
         "spatie/laravel-permission": "^3.6",
+        "laravelium/feed": "6.0.*",
         "wisembly/elephant.io": "^3.3",
         "zircote/swagger-php": "^3.0"
     },

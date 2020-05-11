@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Artisan;
+use DB;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -107,10 +108,46 @@ class FriendsTest extends TestCase
         $header = $this->SetToken($me);
         self::assertFalse($me->isFollowing($user));
 
-        $response = $this->json("post", "api/user/{$user->username}/unfollow", [], $header); //http://blog.me/api/user/redmax/follow
+        $response = $this->json("post", "api/user/{$user->username}/follow", [], $header); //http://blog.me/api/user/redmax/follow
+
+        $response->dump();
 
         self::assertFalse($me->isFollowing($user));
 
-        self::assertTrue($me->followRequest($user));
+        self::assertTrue($me->isFollowingRequest($user));
+    }
+
+    public function testAlpha()
+    {
+        $me = $this->SimpleUser();
+        $user = $this->SimpleUser();
+
+        $header = $this->SetToken($me);
+
+        $user->config->private_compte = true;
+        $user->config->save();
+
+        self::assertFalse($me->isFollowing($user));
+
+        self::assertFalse($me->isFollowingRequest($user));
+
+        $response = $this->json("post", "api/user/{$user->username}/follow", [], $header); //http://blog.me/api/user/redmax/follow
+
+        $response->dump();
+
+        self::assertFalse($me->isFollowing($user));
+
+        self::assertTrue($me->isFollowingRequest($user));
+
+        $response = $this->json("post", "api/user/{$user->username}/unfollow", [], $header); //http://blog.me/api/user/redmax/follow
+
+        $response->dump();
+
+        self::assertFalse($me->isFollowing($user));
+
+        self::assertTrue($me->isFollowingRequest($user));
+
+   //     dd($me->followRequests);
+
     }
 }

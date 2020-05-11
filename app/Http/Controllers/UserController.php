@@ -60,4 +60,17 @@ class UserController extends Controller
         $user = $request->user();
         return view("user.edit", compact("user"));
     }
+
+    public function following($username)
+    {
+        $user = $this->userRepository->findBy("username", $username);
+        return view('user.following', compact('user'));
+    }
+
+    public function followers($username)
+    {
+        $user = $this->userRepository->findBy("username", $username);
+        return view('user.followers', compact('user'));
+    }
+
 }

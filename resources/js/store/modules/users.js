@@ -48,6 +48,6 @@ export default {
     },
     getters: {
         myProfile: (state, getters, rootState) => state.myProfile,
-        usersOnline: (state) => state.usersOnline.join(", "),
+        usersOnline: (state) => state.usersOnline,
     }
 };

@@ -174,10 +174,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\BroadcastServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
-
+        \Musonza\Chat\ChatServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -239,8 +240,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socket' => \App\Services\Websocket\SocketFactory::class,
-
-
+        "Chat" => \Musonza\Chat\Facades\ChatFacade::class,
     ],
 
 ];

@@ -26,21 +26,30 @@ Vue.component(
 );
 
 //conponent
-import friend from "./components/user/friends";
+import friends from "./components/user/friends";
 import EditProfile from "./components/user/editProfile"
 import editAccount from "./components/user/editAccount"
 import editAvatar from "./components/user/editAvatar"
 import editCover from "./components/user/editCover"
 import NotificationNavbar from "./components/Notification/NotificationNavbar"
+import ChatNavbar from "./components/chat/ChatNavbar";
 import NotificationList from "./components/Notification/NotificationList"
-
+import status from  "./components/user/status"
+import following from "./components/follow/following"
+import followers from "./components/follow/followers";
+import chatList from "./components/chat/chatList";
 export default {
-    friends: friend,
+    friends,
     EditProfile,
     editAccount,
     editAvatar,
     editCover,
+    status,
     NotificationNavbar,
-    NotificationList
+    ChatNavbar,
+    NotificationList,
+    following,
+    followers,
+    chatList,
 }
 

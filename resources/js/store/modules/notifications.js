@@ -33,10 +33,11 @@ export default {
     },
     actions: {
         async addNotifs({commit}) {
-            let {data} = await axios.get('api/notifications').catch(function (error) {
+            let {data} = await axios.get('/api/notifications').catch(function (error) {
                 // handle error
-                console.log(error);
+                console.log({tics:error});
             });
+            data.date = Math.round(Date.now()/1000);
             console.log({response: data})
             commit("synchoNotif", data);
             commit("changeNotifLoading", false);

@@ -30,7 +30,7 @@ import './filter';
 global.store = store;
 
 Vue.use(new VueSocketIO({
-    debug: true,
+//    debug: true,
     connection: 'http://localhost:1455',
     vuex: {
         store,
@@ -46,11 +46,14 @@ Vue.use(new VueSocketIO({
 import {useSwitch} from "./composition/useSwitch"
 import {useProfile} from "./composition/useProfile"
 import {mapActions, mapGetters} from "vuex"
+import myMixin from "./vue-router";
 
 console.log({useSwitch});
+
 const app = new Vue({
     el: '#app',
     components,
+    mixins: [myMixin],
     store,
     setup() {
         const [Switch] = useSwitch();
@@ -67,6 +70,9 @@ const app = new Vue({
         }
     },
     computed: {
+        listUserOnline() {
+            return this.usersOnline.join(", ");
+        },
         ...mapGetters(["usersOnline"])
     },
     methods: {
@@ -101,8 +107,6 @@ const app = new Vue({
         if (window.messageSuccess) window.alertSuccess(window.messageSuccess);
         if (window.messageErrors) window.alertError(window.messageErrors);
     }
-
-
 });
 
 

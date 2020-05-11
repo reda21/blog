@@ -102,61 +102,6 @@ class UserController extends Controller
         return new UserRessouce($this->userRepository->find($index));
     }
 
-    /**
-     * @param int $id username
-     * @param string $action follow or unfollow
-     * @param Request $request
-     */
-    public function follow($id, $action, Request $request)
-    {
-        $me = $request->user();
-        $user = $this->userRepository->findBy("username", $id);
-
-        if(! $user){
-            return Helper::responseError("non disponible", 404);
-        }
-
-        if($user->config->private_compte){
-            if ($action == "follow") {
-                $me->followRequest($user);
-                return  Helper::responseData( [
-                    "status" => 3,
-                    "return" => $user->isFollowing($me)? 1 : 0,
-                    "follows" => $user->followers()->count(),
-                    "following" => $user->following()->count()
-                ]);
-            } else {
-                $me->unfollow($user);
-                return  Helper::responseData( [
-                    "status" => 1,
-                    "return" => $user->isFollowing($me)? 1 : 0,
-                    "follows" => $user->followers()->count(),
-                    "following" => $user->following()->count()
-                ]);
-            }
-            return  Helper::responseSuccess("this message");
-
-        }
-
-        if ($action == "follow") {
-            $me->follow($user);
-            return  Helper::responseData( [
-                "status" => 2,
-                "return" => $user->isFollowing($me)? 1 : 0,
-                "follows" => $user->followers()->count(),
-                "following" => $user->following()->count()
-            ]);
-        } else {
-            $me->unfollow($user);
-            return  Helper::responseData( [
-                "status" => 1,
-                "return" => $user->isFollowing($me)? 1 : 0,
-                "follows" => $user->followers()->count(),
-                "following" => $user->following()->count()
-            ]);
-        }
-    }
-
     public function store(AdminUpdateRequest $request)
     {
 

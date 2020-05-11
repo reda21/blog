@@ -4,7 +4,6 @@
         <ul v-else class="notification-body">
             <notification-item :key="notification.id" :notification="notification"
                                v-for="notification in notifications"/>
-
         </ul>
     </div>
 </template>

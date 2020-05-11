@@ -154,3 +154,25 @@
     }
 }
 
+.friends-item{
+    border-top: solid 1px #EEE;
+    padding-top: 15px;
+    padding-bottom: 5px;
+
+    &:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+
+    img {
+        width: 60px !important;
+        height: 60px !important;
+        margin-right: 15px;
+    }
+
+    .friends-body{
+        margin-top: 5px;
+    }
+
+}
+

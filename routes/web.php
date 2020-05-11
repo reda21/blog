@@ -30,8 +30,8 @@ Route::get('/social/handle/{provider}', ['as' => 'social.handle', 'uses' => 'Aut
 //3 user
 Route::group(['prefix' => 'user', 'as' => 'user'], function () {
     Route::get('{user?}', ['uses' => 'UserController@members']);
-    Route::get('{user}/following', ['as' => '.members.user.following', 'uses' => 'UserController@following']);
-    Route::get('{user}/followers', ['as' => '.members.user.followers', 'uses' => 'UserController@followers']);
+    Route::get('{user}/following', ['as' => '.following', 'uses' => 'UserController@following']);
+    Route::get('{user}/followers', ['as' => '.followers', 'uses' => 'UserController@followers']);
     Route::get('{user}/tutoriels', ['as' => '.tutoriels', 'uses' => 'userController@myTutoList']);
     Route::get('{user}/friends', ['as' => '.friends', 'uses' => 'userController@myFriends']);
 });
@@ -51,6 +51,9 @@ Route::group(['prefix' => 'acount', 'as' => 'user'], function () {
 Route::get('notifications', ['as' => 'notifications', 'uses' => 'NotificationsController@notifications']);
 Route::get('notifications/{id}', ['as' => 'notifications.read', 'uses' => 'NotificationsController@readNotifications']);
 
+//5 chat controller
+Route::get('chat', ['as' => 'chat', 'uses' => 'ChatController@conversations']);
+Route::get('chat/{id}', ['as' => 'chat.read', 'uses' => 'ChatController@conversations']);
 
 Route::get("privacy", ["use" => "HomeController@privacy"]);
 Route::get("service", ["use" => "HomeController@service"]);

@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
 use Laravel\Passport\HasApiTokens;
+use Musonza\Chat\Traits\Messageable;
 use Rennokki\Befriended\Traits\Block;
 use Rennokki\Befriended\Traits\Follow;
 use Spatie\Permission\Traits\HasRoles;
@@ -89,6 +90,7 @@ class User extends Authenticatable implements ImplentationUser
     use Cachable;
     use Follow;
     use Block;
+    use Messageable;
 
     /**
      * duration cache model
@@ -156,10 +158,20 @@ class User extends Authenticatable implements ImplentationUser
         return $this->hasOne(ConfigUser::class);
     }
 
+    public function isFollowingRequest($user)
+    {
+        return $this->followRequests()->where("username", $user->username)->count() ? true : false;
+    }
+
     function getNameAttribute()
     {
         return $this->present()->fullName;
 
+    }
+
+    function urlProfile()
+    {
+        return Route("user", [$this->username]);
     }
 
     function showProfile()

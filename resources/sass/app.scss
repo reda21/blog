@@ -1,13 +1,14 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+//mixins
+@import "mixins";
+
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
-@import '~bootstrap-vue/src/index.scss';
 
 @import "~toastr/build/toastr.css";
 

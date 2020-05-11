@@ -7,5 +7,14 @@
                 "var": "username"
             }
         ]
+    },
+    "App\\Notifications\\NotificationRequestFollowersUser": {
+        "text": "**%s** vien envoyer une demande vous suivre",
+        "args": [
+            {
+                "model": "model",
+                "var": "username"
+            }
+        ]
     }
 }

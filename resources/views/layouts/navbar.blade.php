@@ -98,26 +98,28 @@
                 </ul>
             @else
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown nav-icon">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" href="#"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-envelope"></i>
-                            <span class="nav-notif">25</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-label="navbarDropdownMenuLink">
-                            <a href="#" class="dropdown-item">alpha</a>
-                            <a href="#" class="dropdown-item">beta</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">omega</a>
-                        </div>
+                    <chat-navbar>
+                        <li class="nav-item dropdown nav-icon">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" href="#"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-envelope"></i>
+                                <span class="nav-notif">25</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-label="navbarDropdownMenuLink">
+                                <a href="#" class="dropdown-item">alpha</a>
+                                <a href="#" class="dropdown-item">beta</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">omega</a>
+                            </div>
 
-                    </li>
+                        </li>
+                    </chat-navbar>
                     <notification-navbar>
                         <li class="nav-item dropdown nav-icon">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" href="#"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
-                                <span class="nav-notif">25</span>
+                                <span class="nav-notif">0</span>
                             </a>
                             <ul class="notification dropdown-menu dropdown-menu-right" aria-label="navbarDropdownMenuLink">
                                 <li class="dropdown-item dropdown-header">

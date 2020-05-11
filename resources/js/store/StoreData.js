@@ -29,13 +29,13 @@ export default class StoreData {
         return this.data;
     }
 
-    count(){
+    count() {
         return this.data.length;
     }
 
     get(id, key = null) {
         let self = this;
-        if(key)
+        if (key)
             return this.data.find((o) => o[key] == id);
         return this.data.find((o) => o[self.key] == id);
     }
@@ -63,20 +63,20 @@ export default class StoreData {
     }
 
     whereIn(id, key) {
-        if(typeof id != "object") return false;
+        if (typeof id != "object") return false;
         let self = this;
-        if(key)
+        if (key)
             return this.data.filter((o) => id.includes(o[key]));
         return this.data.filter((o) => id.includes(o[self.key]));
     }
 
     delete(key) {
-        if(typeof key == "object"){
+        if (typeof key == "object") {
             console.log("all")
             key.forEach(data => {
                 this.delete(data)
             })
-        }else {
+        } else {
             console.log("unit")
             let index = this.data.findIndex(function (o) {
                 return o.id == key;
@@ -87,6 +87,20 @@ export default class StoreData {
                 console.info('deleted');
             }
         }
+    }
+
+    first() {
+        let length = this.data.length;
+        if (length)
+            return this.data[0];
+        return null;
+    }
+
+    last() {
+        let length = this.data.length;
+        if (length)
+            return this.data[length - 1];
+        return null;
     }
 
     has(key) {

@@ -28,6 +28,7 @@
 
 <style scoped>
     a{
+        cursor: pointer;
         text-decoration: none;
         color:  #6c757d;
     }

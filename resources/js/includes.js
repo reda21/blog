@@ -1,6 +1,6 @@
 require("jquery-confirm")
 //query-confirm
-window.confirms = (message, Confirmer, Annuler) => {
+window.confirms = (message, Confirmer, Annuler, textConfirme = "Confirmer", textAnnuler = "Annuler") => {
     window.$.confirm({
         icon: 'glyphicon glyphicon-trash',
         title: 'Confirm!',
@@ -8,13 +8,13 @@ window.confirms = (message, Confirmer, Annuler) => {
         buttons: {
             Confirmer: {
                 keys: ['enter', 'shift'],
-                text: 'Confirmer',
+                text: textConfirme,
                 btnClass: 'btn-red',
                 action: Confirmer
             },
             Annuler: {
                 //    keys: ['enter', 'shift'],
-                text: 'Annuler',
+                text: textAnnuler,
                 btnClass: 'btn-green',
                 action: Annuler
             }

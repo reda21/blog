@@ -4,7 +4,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Scripts -->
     <script defer>
@@ -22,6 +22,14 @@
         @endif
 
             window.jwt = "{{\App\Services\Helper::getUser()}}"
+/**
+        $(document).ready(function(){
+            $('#action_menu_btn').click(function(){
+                $('.action_menu').toggle();
+            });
+        }); */
+
+        @yield("beforeScript")
     </script>
     <script src="{{mix("/js/moment.min.js")}}" defer></script>
     <script src="{{mix("/js/fr.js")}}" defer></script>
@@ -62,6 +70,7 @@
             @yield('content')
         </main>
         <footer>
+            <scroll-top></scroll-top>
             <div class="row">
                 <div class="col-sm">
                     <div class="footer-col text-center">
@@ -134,7 +143,7 @@
             <div class="row">
                 <div class="col text-center">
                     <div class="footer-btm" style="color: white;">
-                        <span id="span">©2014. Theme by Design_mylife <i style="color: red">[@{{ usersOnline }}]</i></span>
+                        <span id="span">©2014. Theme by Design_mylife <i style="color: red">[@{{ listUserOnline }}]</i></span>
                     </div>
                 </div>
             </div>

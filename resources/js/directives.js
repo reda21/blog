@@ -26,12 +26,23 @@ Vue.directive('tab', {
 Vue.directive('date', {
     inserted(el) {
         let start = "-100y";
-        let end = '+0d' ;
+        let end = '+0d';
 
         window.$(el).datepicker({
-            format : "dd/mm/yyyy",
+            format: "dd/mm/yyyy",
             startDate: start,
             endDate: end,
         });
+    }
+});
+
+Vue.directive('tooltip', {
+    inserted(el, binding) {
+        console.log({tooltip: el, binding});
+        window.$(el).tooltip({
+            title: binding.value,
+            placement: "left"
+        });
+        //data-toggle="tooltip" data-placement="right" :title="conversation.username"
     }
 });

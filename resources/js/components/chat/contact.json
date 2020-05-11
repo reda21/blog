@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "avatar": "https:\/\/static.turbosquid.com\/Preview\/001292\/481\/WV\/_D.jpg",
+        "username": "redmax",
+        "isOnline": "online",
+        "active": true
+    },
+    {
+        "id": 2,
+        "avatar": "https:\/\/static.turbosquid.com\/Preview\/001292\/481\/WV\/_D.jpg",
+        "username": "reda21",
+        "isOnline": "online",
+        "active": false
+    },
+    {
+        "id": 3,
+        "avatar": "https:\/\/static.turbosquid.com\/Preview\/001292\/481\/WV\/_D.jpg",
+        "username": "azuine",
+        "isOnline": "online",
+        "active": false
+    },
+    {
+        "id": 4,
+        "avatar": "https:\/\/static.turbosquid.com\/Preview\/001292\/481\/WV\/_D.jpg",
+        "username": "kolo64",
+        "isOnline": "online",
+        "active": false
+    },
+    {
+        "id": 5,
+        "avatar": "https:\/\/static.turbosquid.com\/Preview\/001292\/481\/WV\/_D.jpg",
+        "username": "unwin",
+        "isOnline": "online",
+        "active": false
+    },
+    {
+        "id": 6,
+        "avatar": "https:\/\/static.turbosquid.com\/Preview\/001292\/481\/WV\/_D.jpg",
+        "username": "lassale",
+        "isOnline": "online",
+        "active": false
+    }
+]

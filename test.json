@@ -1,22 +1,99 @@
 {
     "data": [
         {
-            "id": "47a1831c-aac9-46f0-ae76-5cfc135fac74",
-            "logo": "http:\/\/blog.me\/img\/profile_images\/default.jpg",
-            "url": "http:\/\/blog.me\/notifications\/47a1831c-aac9-46f0-ae76-5cfc135fac74",
-            "label": "<strong>mhagenes<\/strong> vien a commancer vous suivre",
-            "label_strip": "mhagenes vien a commancer vous suivre",
-            "read": false,
-            "create_at": 1587421752
+            "id": 26,
+            "message": "<p>Bonjour Madame merci<\/p>\n",
+            "conversation_slug": "message",
+            "conversation_id": 8,
+            "auteur": {
+                "username": "olga38",
+                "auteur_url": "https:\/\/webmx.herokuapp.com\/user\/olga38",
+                "from_me": false,
+                "image_url": "http:\/\/res.cloudinary.com\/redmax\/image\/upload\/v1518040792\/User\/11\/avatar.jpg"
+            },
+            "created_at": 1518081458
         },
         {
-            "id": "7aec5d56-2ccf-40d3-9a75-2e32249003ef",
-            "logo": "http:\/\/blog.me\/img\/profile_images\/default.jpg",
-            "url": "http:\/\/blog.me\/notifications\/7aec5d56-2ccf-40d3-9a75-2e32249003ef",
-            "label": "<strong>santino26<\/strong> vien a commancer vous suivre",
-            "label_strip": "santino26 vien a commancer vous suivre",
-            "read": false,
-            "create_at": 1587421752
+            "id": 27,
+            "message": "<p>Pont de la mort<\/p>\n",
+            "conversation_slug": "message",
+            "conversation_id": 8,
+            "auteur": {
+                "username": "olga38",
+                "auteur_url": "https:\/\/webmx.herokuapp.com\/user\/olga38",
+                "from_me": false,
+                "image_url": "http:\/\/res.cloudinary.com\/redmax\/image\/upload\/v1518040792\/User\/11\/avatar.jpg"
+            },
+            "created_at": 1518081502
+        },
+        {
+            "id": 28,
+            "message": "<p>sisi<\/p>\n",
+            "conversation_slug": "message",
+            "conversation_id": 8,
+            "auteur": {
+                "username": "reda21",
+                "auteur_url": "https:\/\/webmx.herokuapp.com\/user\/reda21",
+                "from_me": true,
+                "image_url": "http:\/\/res.cloudinary.com\/redmax\/image\/upload\/v1582743563\/User\/1\/avatar.jpg"
+            },
+            "created_at": 1518081599
+        },
+        {
+            "id": 29,
+            "message": "<p>jai perdu<\/p>\n",
+            "conversation_slug": "message",
+            "conversation_id": 8,
+            "auteur": {
+                "username": "reda21",
+                "auteur_url": "https:\/\/webmx.herokuapp.com\/user\/reda21",
+                "from_me": true,
+                "image_url": "http:\/\/res.cloudinary.com\/redmax\/image\/upload\/v1582743563\/User\/1\/avatar.jpg"
+            },
+            "created_at": 1518081613
+        },
+        {
+            "id": 30,
+            "message": "<p>Pk<\/p>\n",
+            "conversation_slug": "message",
+            "conversation_id": 8,
+            "auteur": {
+                "username": "olga38",
+                "auteur_url": "https:\/\/webmx.herokuapp.com\/user\/olga38",
+                "from_me": false,
+                "image_url": "http:\/\/res.cloudinary.com\/redmax\/image\/upload\/v1518040792\/User\/11\/avatar.jpg"
+            },
+            "created_at": 1518081619
+        },
+        {
+            "id": 31,
+            "message": "<p>comme sa<\/p>\n",
+            "conversation_slug": "message",
+            "conversation_id": 8,
+            "auteur": {
+                "username": "reda21",
+                "auteur_url": "https:\/\/webmx.herokuapp.com\/user\/reda21",
+                "from_me": true,
+                "image_url": "http:\/\/res.cloudinary.com\/redmax\/image\/upload\/v1582743563\/User\/1\/avatar.jpg"
+            },
+            "created_at": 1518081661
         }
-    ]
+    ],
+    "meta": {
+        "titre": "message",
+        "messageSystem": false,
+        "listeUsers": [
+            {
+                "auteur": "olga38",
+                "auteur_url": "https:\/\/webmx.herokuapp.com\/user\/olga38",
+                "avatar": "http:\/\/res.cloudinary.com\/redmax\/image\/upload\/v1518040792\/User\/11\/avatar.jpg"
+            },
+            {
+                "auteur": "reda21",
+                "auteur_url": "https:\/\/webmx.herokuapp.com\/user\/reda21",
+                "avatar": "http:\/\/res.cloudinary.com\/redmax\/image\/upload\/v1582743563\/User\/1\/avatar.jpg"
+            }
+        ],
+        "myId": 1
+    }
 }

@@ -5,7 +5,7 @@
                 <div class="col-6">
                     <div class="description-block text-center">
                         <h5 class="description-header">
-                            <a href="http://webmx2018.me/user/redmax/followers">{{followers}}</a>
+                            <a :href="user.url+'/following'">{{following}}</a>
                         </h5>
                         <span class="description-text">Abonnements</span>
                     </div>
@@ -13,7 +13,7 @@
                 <div class="col-6">
                     <div class="description-block text-center">
                         <h5 class="description-header">
-                            <a href="http://webmx2018.me/user/redmax/following">{{following}}</a>
+                            <a :href="user.url+'/followers'">{{followers}}</a>
                         </h5>
                         <span class="description-text">Abonnés</span>
                     </div>
@@ -23,9 +23,8 @@
         <div :class="unit? 'col-md-6' : 'col-12'">
             <div class="row">
                 <div class="col-6">
-                    <b-button v-if="user.activate" type="button" :block="true" @click="theAction"
-                              :loading="loadingBouton"
-                              :variant="variant">
+                    <b-button v-if="activate" type="button" :block="true" @click="theAction"
+                              :loading="loadingBouton" :variant="variant">
                         <i class="fa fa-user-plus"></i> {{textBouton}}
                     </b-button>
                 </div>
@@ -40,10 +39,13 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
         props: {
             user: Object,
             friends: Object,
+            activ: Number,
             unit: {
                 type: Boolean,
                 defaults: false
@@ -66,26 +68,45 @@
                 this.changeButton(this.friends);
             }
         },
+        computed: {
+            activate() {
+                return this.myProfile.id != this.user.id && this.activ == 1;
+            },
+
+            ...mapGetters(["myProfile"])
+        },
         methods: {
-            update(data){
+            update(data) {
                 this.status = this.friends.status = data.status;
-                this.friends.return = data.return,
+                this.friends.return = data.return;
                 this.following = data.following;
                 this.followers = data.follows;
                 this.loadingBouton = false;
+
             },
             theAction() {
-                if (!this.user.activate) return false
-                this.loadingBouton = true;
-
+                if (!this.activate) return false
                 if (this.status == 2) {
-                    this.clickUnfollow(({data}) => {
-                        console.log({clickUnfollow: data});
-                        this.update(data);
-                    })
+                    window.confirms("Se désabonner de " + this.user.usename + " ?", () => {
+                        this.loadingBouton = true;
+                        this.clickUnfollow(({data}) => {
+                            console.log({clickUnfollow: data});
+                            this.update(data);
+                        })
+                    }, () => {}, "Se désabonner");
+
+                } else if (this.status == 3) {
+                    window.confirms("Si vous changez d’avis, vous devrez à nouveau demander à vous abonner à " + this.user.usename + ".", () => {
+                        this.loadingBouton = true;
+                        this.clickUnfollow(({data}) => {
+                            console.log({clickUnfollow: data});
+                            this.update(data);
+                        })
+                    }, () => {}, "Se désabonner");
                 } else {
                     this.clickFollow(({data}) => {
                         console.log({clickFollow: data});
+
                         this.update(data);
                     })
                 }
@@ -102,12 +123,12 @@
                             this.followers--
                     }, 3000)
                 }, () => {
-                    console.log("no");
+                    console.log("no");  Se désabonner de @meryboua ?
                 })
 */
             },
             clickFollow(callback) {
-                if (!this.user.activate) return false
+                if (!this.activate) return false
                 this.$http.post(this.resourceUrl + "/follow").then(response => {
                     callback(response.data);
                 }, response => {
@@ -116,7 +137,7 @@
                 });
             },
             clickUnfollow(callback) {
-                if (!this.user.activate) return false
+                if (!this.activate) return false
                 this.$http.post(this.resourceUrl + "/unfollow").then(response => {
                     callback(response.data);
                 }, response => {

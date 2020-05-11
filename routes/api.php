@@ -24,15 +24,21 @@ Route::middleware('auth:api')->post('avatar', ['uses' => 'Api\UserController@cha
 Route::middleware('auth:api')->post('cover', ['uses' => 'Api\UserController@changeCover']);
 
 
-Route::group(['prefix' => 'user', 'as' => 'user'], function () {
-    Route::get("/", ["as" => ".index", "uses" => 'Api\UserController@index']);
-    Route::get("/{id}", ["as" => ".sho", "uses" => 'Api\UserController@show']);
-    Route::post('/{id}/{action}', ['as' => '.follow', 'uses' => 'Api\UserController@follow'])
+Route::group(['prefix' => 'user'], function () {
+    Route::get("/", ["uses" => 'Api\UserController@index']);
+    Route::get("/{id}", ["uses" => 'Api\UserController@show']);
+    Route::post('/{id}/{action}', ['uses' => 'Api\FriendController@follow'])
         ->where('action', 'follow|unfollow')->middleware(['auth:api']);
+    Route::get('/{id}/following', ['uses' => 'Api\FriendController@getfollowing'])->middleware(['auth:api']);
+    Route::get('/{id}/followers', ['uses' => 'Api\FriendController@getfollowers'])->middleware(['auth:api']);
+    Route::post('/{id}/request', ['uses' => 'Api\FriendController@request'])->middleware(['auth:api']);
 });
 
 //notification
-Route::get('notifications', ['as' => 'user.notifications', 'uses' => 'Api\NotificationsController@GetNotifications'])->middleware(['auth:api']);
-Route::delete('notifications/{id}', ['as' => 'user.notifications.delete', 'uses' => 'Api\NotificationsController@DeleteNotification'])->middleware(['auth:api']);
-Route::delete('notifications', ['as' => 'user.notifications.deleteAll', 'uses' => 'Api\NotificationsController@DeleteAllNotification'])->middleware(['auth:api']);
+Route::get('notifications', ['uses' => 'Api\NotificationsController@GetNotifications'])->middleware(['auth:api']);
+Route::delete('notifications/{id}', ['uses' => 'Api\NotificationsController@DeleteNotification'])->middleware(['auth:api']);
+Route::delete('notifications', ['uses' => 'Api\NotificationsController@DeleteAllNotification'])->middleware(['auth:api']);
 
+//chat
+Route::resource('chat', 'Api\ChatController', ['except' => ['create', 'edit', 'update']])->middleware(['auth:api']);
+Route::post('chat/{id}', ['uses' => 'Api\ChatController@Send'])->middleware(['auth:api']);

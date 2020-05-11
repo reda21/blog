@@ -3,19 +3,21 @@
     <div class="card-body pt-5">
         <img src="{{asset($user->avatar)}}" alt="profile-image" class="card-image-profile">
         <h5 class="card-title">
-            <i class="fa fa-circle text-success"></i>
+            <status username="{{$user->username}}">
+                <i class="fa fa-circle text-danger"></i>
+            </status>
             <a href="{{$user->present()->urlProfile}}">{{$user->username}}</a>
             <span>({{$user->roleName}})</span>
         </h5>
-        <friends :friends="{{\App\Services\Helper::ProfileStatus($user)}}"
-                 :user="{{json_encode($user->present()->cordinate)}}">
+        <friends :friends="{{\App\Services\Helper::ProfileStatus($user->id, Auth::id())}}"
+                 :user="{{json_encode($user->present()->cordinate)}}" :activ="{{$user->id != auth()->id()? 1 : 0}}">
             <div class="row">
                 <div class="col-12">
                     <div class="row">
                         <div class="col-6">
                             <div class="description-block text-center">
                                 <h5 class="description-header">
-                                    <a href="http://webmx2018.me/user/redmax/followers">{{$user->followers()->count()}}</a>
+                                    <a href="{{route("user.following",[$user->username])}}">{{$user->following()->count()}}</a>
                                 </h5>
                                 <span class="description-text">Abonnements</span>
                             </div>
@@ -23,7 +25,7 @@
                         <div class="col-6">
                             <div class="description-block text-center">
                                 <h5 class="description-header">
-                                    <a href="http://webmx2018.me/user/redmax/following">{{$user->following()->count()}}</a>
+                                    <a href="{{route("user.followers",[$user->username])}}">{{$user->followers()->count()}}</a>
                                 </h5>
                                 <span class="description-text">Abonnés</span>
                             </div>
@@ -34,9 +36,7 @@
                     <div class="row">
                         <div class="col-6">
                             @if($user->id != auth()->id())
-                                <button type="button" class="btn btn-outline-secondary btn-block">
-                                    <i class="fa fa-user"></i> Suivre
-                                </button>
+                                {!!  \App\Services\Helper::ButtonFollow($user)!!}
                             @endif
                         </div>
                         <div class="col-6">

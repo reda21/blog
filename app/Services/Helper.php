@@ -4,10 +4,14 @@
 namespace App\Services;
 
 
+use App\Events\WebsocketEvent;
 use App\Models\User;
+use App\Notifications\NotificationFollowersUser;
+use App\Notifications\NotificationRequestFollowersUser;
 use Firebase\JWT\JWT;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Request;
+use phpDocumentor\Reflection\Types\Self_;
 use URL;
 
 class Helper
@@ -171,17 +175,49 @@ class Helper
         return compact('width', "height", "type", "attr");
     }
 
-    public static function ProfileStatus(User $user): string
+    public static function ProfileStatus(int $follow_id, int $user_id, $jsonForma = true)
     {
-        $me = auth()->user();
-        $status = $me->isFollowing($user) ? 2 : ($user->config->private_compte ? 3 : 1);
-        $array = [
+        $follow = User::find($follow_id);
+        $user = User::find($user_id);;
+        $status = $user->isFollowing($follow) ? 2 : ($follow->config->private_compte ? ($user->isFollowingRequest($follow) ? 3 : 1) : 1);
+
+        $data = [
             "status" => $status,
-            "return" => $user->isFollowing($me)? 1 : 0,
-            "follows" => $user->followers()->count(),
-            "following" => $user->following()->count()
+            "return" => $follow->isFollowing($user) ? 1 : 0,
+            "follows" => $follow->followers()->count(),
+            "following" => $follow->following()->count()
         ];
-        return json_encode($array);
+        if ($jsonForma)
+            return json_encode($data);
+        return $data;
+    }
+
+    public static function Follow($me, $follow)
+    {
+        if (!$me->isFollowing($follow)) {
+            $private = $follow->config->private_compte ? true : false;
+            if ($private) {
+                if (!$me->isFollowingRequest($follow))
+                    $me->followRequest($follow);
+                $follow->notify(new NotificationRequestFollowersUser($me));
+            } else {
+                $me->follow($follow);
+                $follow->notify(new NotificationFollowersUser($me));
+            }
+        }
+        return self::ProfileStatus($follow->id, $me->id, false);
+
+    }
+
+    public static function UnFollow($me, $follow)
+    {
+        $private = $follow->config->private_compte;
+        if ($me->isFollowing($follow)) {
+            $me->unfollow($follow);
+        } elseif ($private && $me->isFollowingRequest($follow)) {
+            $me->cancelFollowRequest($follow);
+        }
+        return self::ProfileStatus($follow->id, $me->id, false);
     }
 
     public static function getUser()
@@ -205,5 +241,44 @@ class Helper
         return JWT::encode($token, "mon_super_cle");
     }
 
+    public static function ButtonFollow(User $user)
+    {
+        $status = self::ProfileStatus($user->id, auth()->id(), false);
+
+        switch ($status["status"]) {
+            case 2:
+                $title = "Abonné(e)";
+                $variant = "btn-outline-primary";
+                break;
+            case 1:
+                $title = ($status['return']) ? "S’abonner en retour" : "S’abonner";
+                $variant = "btn-outline-secondary";
+                break;
+            case 3:
+                $title = "demande envoyée(e)";
+                $variant = "btn-outline-secondary";
+                break;
+        }
+        return '<button type="button" class="btn ' . $variant . ' btn-block"><i class="fa fa-envelope"></i> ' . $title . '</button>';
+    }
+
+    public static function getUrlNotification($type,$me ,$model)
+    {
+        $array = [
+            "App\Notifications\NotificationFollowersUser" => fn($me ,$model)=> $model->present()->url,
+            "App\Notifications\NotificationRequestFollowersUser" => fn($me ,$model)=> route('user.followers', [$me->username])
+        ];
+
+        return $array[$type]($me ,$model);
+
+
+    }
+
+    public static function socket($event, $data, $username = null, $channel = "/")
+    {
+        event(new WebsocketEvent($event, $data, $username, $channel));
+    }
+
 
 }
+
