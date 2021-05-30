@@ -100,6 +100,6 @@
         "vue-socket.io": "^3.0.7",
         "vuex": "^3.1.2",
         "webpack-bundle-analyzer": "^3.6.0",
-        "ws": "^7.2.3"
+        "ws": "^7.4.6"
     }
 }
