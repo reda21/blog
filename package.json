@@ -81,7 +81,7 @@
         "mocha": "^7.0.1",
         "mocha-webpack": "^1.1.0",
         "mochapack": "^1.1.13",
-        "moment": "^2.24.0",
+        "moment": "^2.29.2",
         "pace-progress": "^1.0.2",
         "pc-bootstrap4-datetimepicker": "^4.17.50",
         "sinon": "^9.0.0",
