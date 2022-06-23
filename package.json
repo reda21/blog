@@ -75,7 +75,7 @@
         "jquery-confirm": "^3.3.4",
         "jquery-sortable": "^0.9.13",
         "jquery-ui": "^1.12.1",
-        "jsdom": "^16.2.0",
+        "jsdom": "^16.5.0",
         "jsdom-global": "^3.0.2",
         "jsonwebtoken": "^8.5.1",
         "mocha": "^7.0.1",
